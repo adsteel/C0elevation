@@ -1,6 +1,6 @@
 ###A disabled version of C0elevation.com
-_replace zero with 'o' for true site url_
-Sole designer and developer, as well as co-founder.
+_replace zero with 'o' for true site url_  
+Sole designer and developer, as well as co-founder.  
 Last contribution: August 2014.
 
 ###App Setup
