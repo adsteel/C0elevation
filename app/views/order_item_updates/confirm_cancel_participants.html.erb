@@ -1,0 +1,39 @@
+<% provide(:title, "Confirm participant cancellation") %>
+
+<section class="scaffold">
+	<div class="pure-g-r">
+		<div class="pure-u-1-4">
+			&nbsp;
+		</div>
+		<div class="pure-u-1-2">
+			<h2>Refund requested</h2>
+
+			<div class="row">
+			<p>Order_item_id = <%= @order_item.id %>::<%= @order_item.date_range %><%= @order_item.tag_line %></p>
+				You are requesting to cancel <%= pluralize( @attendance_difference.abs, 'participant') %> off this trip, leaving <%= pluralize( @new_attendance, 'participant') %> on the trip. This will result in a refund of $<%= @order_item.refund_total(@new_attendance) %>.
+			</div>
+
+			<div class="row">
+				Please confirm this change by clicked the 'confirm' button below. Otherwise, click 'cancel'.
+			</div>
+
+			<div class="row">
+				<%= form_for @order_item, :url => {:controller => 'order_item_updates', :action => "cancel_participants"}, method: :post do |f| %>
+					<div class="row is-center">
+						<%= f.hidden_field :number_of_people, :value => @new_attendance %>
+					</div>
+
+					<div class="row is-center">
+						<%= f.submit 'Confirm', :class => "pure-button" %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="row is-center">
+				<%= link_to 'Cancel', profile_path %>
+				</div>
+		<div class="pure-u-1-4">
+			&nbsp;
+		</div>
+	</div>
+</section>			

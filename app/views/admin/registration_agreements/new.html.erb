@@ -1,0 +1,47 @@
+
+<% provide(:title, "Registration Agreements - New" ) %>
+
+<div class="container-fluid">
+
+  <div class="container registration-agreements new admin">
+
+    <div class="row">
+
+		<h1>New registration agreement</h1>
+		<p class="is-center"><em>New agreements will immediately become the agreement signed with any purchase.</em></p>
+
+		<%= link_to 'Cancel', admin_registration_agreements_path, class: "btn btn-success" %> 
+	    <%= render 'admin/shared/admin_breadcrumbs' %>
+
+		<%= form_for [:admin, @registration_agreement], :html => { :multipart => true } do |f| %>
+		  <% if @registration_agreement.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@registration_agreement.errors.count, "error") %> prohibited this admin_registration_agreement from being saved:</h2>
+
+		      <ul>
+		      <% @registration_agreement.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+
+		  <div class="row form-group">
+		    <%= f.label :uniq_name %><br>
+		    <%= f.text_field :uniq_name, value: @uniq_string %>
+		  </div>
+
+		  <div class="row form-group">
+		      <%= f.label :pdf, 'Upload PDF version' %>
+		  <%= f.file_field :pdf %>
+		  </div>
+
+		  <div class="actions">
+		    <%= f.submit 'Add agreement', confirm: "Are you sure? Adding a new registration agreement(privacy policy) means all such agreements signed from now on will be this agreement.", class: "btn btn-lg btn-primary" %>
+		  </div>
+		<% end %>
+
+
+	</div>
+  </div>	
+</div>

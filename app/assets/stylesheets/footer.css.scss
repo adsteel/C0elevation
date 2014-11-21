@@ -1,0 +1,34 @@
+@import "control_panel";
+footer { border-top: solid $lightgrey 1px; padding-top: 20px; margin-top: 50px;}
+
+.main-footer { margin-bottom:30px; background:$main-footer-background; }
+.main-footer a { color: $grey; }
+
+.footer-links { border-right: 1px solid rgb(177,177,177); color:$footer-links-color; }
+
+.footer-links li { margin:15px 0; }
+
+.newsletter { padding-left:100px; }
+.newsletter h1 { font-size:2em; margin-bottom:10px; }
+.newsletter h3 { color:$newsletter-firstToHear-color; margin-bottom:10px; }
+.newsletter .form-inline .input-group { width:145%; margin-top: 20px;}
+
+.bottom-footer { padding:50px; background:$bottom-footer-background; color:$bottom-footer-text-color; text-align:center; font-size:.50em; }
+small.copyright { font-size: 1.5em; }
+
+
+@media only screen and (min-width:768px) and (max-width:991px) {
+  .footer-links .set-2 { margin-right:60px; }
+}
+
+@media only screen and (max-width:767px) {
+  .main-footer { margin-bottom:0; }
+
+  .footer-links { overflow:hidden; border-right:none; }
+  .footer-links .set-2 { margin-right:0; }
+
+  .newsletter { padding-left:15px; clear:both; }
+  .newsletter .form-inline .input-group { width:inherit; }
+
+  .bottom-footer { padding:25px; }
+}

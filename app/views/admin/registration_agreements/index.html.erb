@@ -1,0 +1,40 @@
+
+<% provide(:title, "Registration Agreements - Index" ) %>
+
+<div class="container-fluid">
+
+  <div class="container registration-agreements index admin">
+
+    <div class="row">
+
+      <h1>Listing registration agreements</h1>
+      <%= link_to 'New Registration agreement', new_admin_registration_agreement_path, class: "btn btn-success" %> 
+      <%= render 'admin/shared/admin_breadcrumbs' %>
+
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Uniq name</th>
+            <th>Date uploaded</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @registration_agreements.each do |registration_agreement| %>
+            <tr>
+              <td><%= registration_agreement.id %></td>
+              <td><%= registration_agreement.uniq_name %></td>
+              <td><%= registration_agreement.created_at %></td>
+              <td><%= link_to 'Open', registration_agreement.pdf.url, target: "blank" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+

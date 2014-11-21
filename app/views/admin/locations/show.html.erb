@@ -1,0 +1,38 @@
+
+<% provide(:title, @location.description ) %>
+
+<div class="container-fluid">
+
+	<div class="container location-show admin">
+
+		<h1>Location Show</h1>
+
+		<p id="notice"><%= notice %><div>
+
+		<div class="row">
+			<%= link_to 'Edit', edit_admin_location_path(@location), class: "btn btn-success" %> |
+			<%= render 'admin/shared/admin_breadcrumbs' %>
+
+		</div>
+		<div class="row">
+		  <strong>Description:</strong>
+		  <%= @location.description %>
+		<div>
+
+		<div class="row">
+		  <strong>Latitude:</strong>
+		  <%= @location.latitude %>
+		<div>
+
+		<div class="row">
+		  <strong>Longitude:</strong>
+		  <%= @location.longitude %>
+		<div>
+
+		<div class="row">
+		  <strong>Agency:</strong>
+		  <%= @location.agency_id %>
+		<div>
+
+	</div>
+</div>

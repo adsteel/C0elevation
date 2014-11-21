@@ -1,0 +1,50 @@
+<% provide(:title, "All guides") %>
+
+<section class="container-fluid">
+  <div class="container full-height admin">
+
+    <div class="row">
+      <h1>All guides</h1>
+
+
+      <%= link_to '+ Add Guide', new_admin_guide_path, class: "btn btn-success" %> 
+      <%= render 'admin/shared/admin_breadcrumbs' %>
+
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Intro</th>
+            <th>Bio</th>
+            <th>Approved</th>
+            <th>Banned</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @guides.each do |guide| %>
+            <tr>
+              <td><%= image_tag guide.image.url(:thumb) %></td>
+              <td><%= guide.full_name %></td>
+              <td><%= truncate(guide.intro) %></td>
+              <td><%= truncate(guide.bio) %></td>
+              <td><%= guide.approved %></td>
+              <td><%= guide.banned %></td>
+              <td><%= link_to 'Show', admin_guide_path(guide) %></td>
+              <td><%= link_to 'Edit', edit_admin_guide_path(guide) %></td>
+              <td><%= link_to 'Destroy', admin_guide_path(guide), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+

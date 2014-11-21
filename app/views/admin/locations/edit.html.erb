@@ -1,0 +1,17 @@
+<% provide(:title, @location.description + " - Edit") %>
+
+<div class="container-fluid">
+
+	<div class="container location-edit admin">
+
+		<h1>Editing location</h1>
+		<%= render 'admin/shared/admin_breadcrumbs' %>
+
+		<%= render 'form' %>
+
+		<div class="row">
+			<%= link_to 'Cancel', admin_location_path(@location) %>
+		</div>
+
+	</div>
+</div>

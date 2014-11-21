@@ -1,0 +1,15 @@
+
+<% provide(:title, "Admin - New Activity") %>
+
+<div class="container-fluid">
+
+	<div class="container new-activity admin">
+		<h1>New activity</h1>
+		<%= render 'admin/shared/admin_breadcrumbs' %>
+
+		<%= render 'form' %>
+
+		<%= link_to 'Cancel', admin_activities_path %>
+
+	</div>
+</div>

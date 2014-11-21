@@ -1,0 +1,72 @@
+section.devise { margin-top: 50px; }
+.devise input { width: 100%; }
+.devise h2 { margin-bottom: 20px; }
+
+.devise.shared-links { font-size: 90%; margin-top: 20px; margin-bottom: 80px; }
+.devise .shared-links p { font-size: 105%; margin-bottom: 10px; margin-top: 10px;}
+
+.devise #user_accept_terms { margin-left: -2px; display: inline; margin-bottom: 10px; }
+.devise label.checkbox { display: inline; margin-top: 10px; font-weight: 200;}
+
+// notices
+.devise .alert { background-color: rgba(0, 255, 0, .2); margin-bottom: 30px; padding: 5px 5px; }
+
+
+// errors
+.devise #error_explanation h2 { font-size: 110%; font-weight: 200;}
+.devise #error_explanation li { margin-bottom: 10px; padding: 5px 10px; background-color: rgba(255, 0, 0, .2); }
+
+
+/*  addressing Chrome's nature of turning auto-completed field off-yellow  */
+
+input:-webkit-autofill {
+	-webkit-text-fill-color: $black;
+	-webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+input:-moz-autofill {
+	-moz-text-fill-color: $black;
+	-moz-box-shadow: 0 0 0px 1000px white inset;
+}
+input:-o-autofill {
+	-o-text-fill-color: $black;
+	-o-box-shadow: 0 0 0px 1000px white inset;
+}
+input:-khtml-autofill {
+	-khtml-text-fill-color: $black;
+	-khtml-box-shadow: 0 0 0px 1000px white inset;
+}
+
+input:focus:-webkit-autofill {
+	-webkit-text-fill-color: $black;
+	-webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+input:focus:-moz-autofill {
+	-moz-text-fill-color: $black;
+	-moz-box-shadow: 0 0 0px 1000px white inset;
+}
+input:focus:-o-autofill {
+	-o-text-fill-color: $black;
+	-o-box-shadow: 0 0 0px 1000px white inset;
+}
+input:focus:-khtml-autofill {
+	-khtml-text-fill-color: $black;
+	-khtml-box-shadow: 0 0 0px 1000px white inset;
+}
+
+/* Device size specific configuration  */
+
+@media only screen and (min-width:992px) and (max-width:1199px) {
+
+
+}
+
+@media only screen and (min-width:768px) and (max-width:991px) {
+
+
+}
+
+@media only screen and (max-width:767px) {
+
+  .devise .shared-links p { font-size: 120%; margin-bottom: 10px; margin-top: 20px;}
+
+}

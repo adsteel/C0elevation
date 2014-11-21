@@ -1,0 +1,111 @@
+<% provide(:title, "Order update") %>
+
+<section class="scaffold">
+	<p id="notice">Notice:<%= notice %></p>
+	<% if @order.errors.any? %>
+		<% @order.errors.each do |e| %>
+			<p>Error: <%= e %></p>
+		<% end %>
+	<% end %>
+
+
+<% if @new_attendance > @old_attendance #require the credit card %>
+
+	<div class="pure-g-r">
+		<div class="pure-u-1-5">
+			&nbsp;
+		</div>
+		<div class="pure-u-3-5">
+			<% form_for @order do |f| %>
+				<div class="row">
+					You are changing your trip from <%= pluralize(@old_attendance, 'person') + " to " + pluralize(@new_attendance, 'person') %>, a total of <%= pluralize(@attendance_difference, 'person') %> more. At $<%= @trip.second_person_cost %>/person, this will be $<%= @update_total %> additional.
+				</div>
+
+				<div class="row">
+					Confirm your account details.
+				</div>
+				<div class="row">
+					<%= text_field_tag :email, nil, :placeholder => "your account email" %>
+				</div>
+				<div class="row">
+					<%= password_field_tag :password, nil, :placeholder => "your account password" %>
+				</div>
+				<% if @order.stripe_card_token.present? %>
+					<div class="row">
+						Your credit card information has been received.
+					</div>
+				<% else %>
+					<div class="row">
+						Enter your credit card or debit card information.
+					</div>
+					<div class="row">
+						<%= text_field_tag :name, nil, name: nil, :placeholder => "name on card" %>
+					</div>
+					<div class="row">
+						<%= text_field_tag :card_number, nil, name: nil, :placeholder => "card number", 'data-stripe' => 'number' %>
+					</div>
+					<div class="row">
+						Card expires 
+						<%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", 'data-stripe' => 'exp-month'} %>
+						<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+7}, {name: nil, id: "card_year", 'data-stripe' => 'exp-year'} %>
+					</div>
+					<div class="row">
+						<%= text_field_tag :card_code, nil, name: nil, :placeholder => "cvc", 'data-stripe' => 'cvc' %>
+						<%= hidden_field_tag :order_total, current_user.order_total %>
+					</div>
+					<div class="row">
+						<%= f.submit 'Purchase', :class => "pure-button" %>
+					</div>
+				<% end %>
+
+				<div id="stripe_error">
+					<noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+				</div>
+
+				<div class="row">
+					To complete this transaction and update your order, press the update button below.
+				</div>
+				<div class="row is-center">
+					<br>
+					<%= f.submit 'Update order', :class => "pure-button" %>
+				</div>
+			<% end %>
+		</div>
+		<div class="pure-u-1-5">
+			&nbsp;
+		</div>
+	</div>
+
+<% elsif @new_attendance < @old_attendance #refund the card %>
+
+	<div class="pure-g-r">
+		<div class="pure-u-1-5">
+			&nbsp;
+		</div>
+		<div class="pure-u-3-5">
+			<% form_for @order do |f| %>
+				<div class="row">
+					You are changing your trip from <%= pluralize(@old_attendance, 'person') + " to " + pluralize(@new_attendance, 'person') %>. As you are <%= time_ago_in_words(@order_item.start_date) %> from your trip, this qualifies you for a <%= @refund_percentage %> refund of $<%= @refund %>. This refund will be added to the purchase card within 7 business days.
+				</div>
+
+				<div class="row">
+					To complete this transaction and update your order, press the update button below.
+				</div>
+				<div class="row is-center">
+					<br>
+					<%= f.submit 'Update order', :class => "pure-button" %>
+				</div>
+			<% end %>
+		</div>
+		<div class="pure-u-1-5">
+			&nbsp;
+		</div>
+	</div>
+
+<% else %>
+	<div class="row">
+		There are no changes to your order.
+	</div>
+<% end %>
+
+</section>

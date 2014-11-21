@@ -1,0 +1,41 @@
+		<%= form_for [@trip, @image] do |f| %>
+			<% if @image.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(@image.errors.count, "error") %> prohibited this trip from being saved:</h2>
+
+					<ul>
+					<% @image.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+					</ul>
+				</div>
+			<% end %>
+
+			<div class="row">
+				<%= f.label :asset, "Upload image" %>
+				<%= f.file_field :asset %>
+			</div>
+
+			<div class="row">
+				<%= f.label :description, "Optional photo description" %><br>
+				<%= f.text_field :description %>
+			</div>
+
+			<div class="row">
+				<%= f.label :ratio, "*Ratio" %><br>
+				<%= f.select :ratio, @ratios %>
+			</div>
+
+			<div class="row">
+				<%= check_box_tag :primary %> Make this the primary picture for this trip? (3x2 ratio only)
+			</div>
+
+			<div class="row">
+				<%= check_box_tag :banner %> Make this the banner picture for this trip? (900x299 ratio only)
+			</div>
+
+			<div class="row">
+				<%= f.submit 'Save', class: "btn btn-lg btn-primary" %>
+			</div>
+
+		<% end %>

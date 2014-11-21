@@ -1,0 +1,29 @@
+<section id="client_section" class="upcoming-trips">
+	<div class="row">
+		<div class="col-xs-12 cell">
+			<h2>My upcoming trips</h2>
+		</div>
+	</div>
+
+	<% if @upcoming_client_trips %>
+
+		<%= render partial: "client_item", collection: @upcoming_client_trips %>
+
+	<% else %>
+
+		<p>You currently have no upcoming adventures. You can browse for more trips <%= link_to 'here', home_path, class: "blue-link" %></p>
+	
+	<% end %>
+
+	<% if @user_past_trips %>
+
+		<div class="row">
+			<div class="col-xs-12 cell">
+				<h2>My trip history</h2>
+			</div>
+		</div>
+
+		<%= render partial: "client_item", collection: @past_client_trips %>
+
+	<% end %>
+</section>

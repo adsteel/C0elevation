@@ -1,0 +1,19 @@
+<% provide(:title, "Trip Images Index") %>
+
+<div class="container-fluid">
+
+	<div class="container trip-images admin">
+
+		<h1>Trip Images index</h1>
+
+		<div class="row">
+			<%= link_to "+ New image", new_trip_image_path(@trip), class: "btn btn-success" %> 
+			<%= link_to "Back to trip", admin_trip_path(@trip), class: "btn btn-success" %> 
+			<%= render 'admin/shared/admin_breadcrumbs' %>
+		</div>
+
+		<%= render partial: "image_display", collection: @images %>
+
+	</div>
+
+</div>

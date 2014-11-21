@@ -1,0 +1,46 @@
+<% provide(:title, "All dates for " + @trip.tag_line) %>
+
+<div class="container-fluid">
+
+	<div class="container trip-dates admin">
+
+		<h1>All offered dates for</h1>
+		<h4 class="is-center"><%=  @trip.title + " - " + @trip.tag_line %></h4>
+
+		<div class="row">
+			<%= link_to '+ Add trip date', new_trip_trip_date_path(@trip), class: "btn btn-success" %> 
+			<%= link_to 'Back to Trip', admin_trip_path(@trip), class: "btn btn-success" %> 
+			<%= render 'admin/shared/admin_breadcrumbs' %>
+		</div>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Start date</th>
+					<th>End date</th>
+					<th>Start Time</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @trip_dates.each do |trip_date| %>
+					<tr>
+						<td><%= trip_date.start_date.strftime('%-m/%-d/%y') %></td>
+						<td><% if trip_date.end_date == trip_date.start_date %>
+								-
+							<% else %>
+								<%= trip_date.end_date.strftime('%-m/%-d/%y') %>
+							<% end %>
+						</td>
+
+						<td><%= trip_date.start_time if trip_date.start_time %></td>
+						<td><%= link_to 'Delete', trip_trip_date_path(@trip, trip_date), method: :delete, data: { confirm: 'Are you sure?' } if trip_date.deletable? %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+	</div>
+
+</div>	

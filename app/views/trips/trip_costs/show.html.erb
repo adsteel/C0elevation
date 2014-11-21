@@ -1,0 +1,73 @@
+<% provide(:title, "Trip cost") %>
+
+<div class="container-fluid">
+
+  <div class="container show trip-cost admin">
+
+    <h4>for <%= @trip.title + " with company " + @trip.company.name %></h4>
+
+    <%= link_to 'Edit', edit_trip_trip_cost_path(@trip, @trip_cost), class: "btn btn-success" %> 
+    <%= link_to 'Trip', admin_trip_path(@trip), class: "btn btn-success" %> 
+    <%= render 'admin/shared/admin_breadcrumbs' %>
+
+    <div class="row" id="notice">
+      <%= notice %>
+    </div>
+
+    <div class="row">
+      <strong>Trip:</strong>
+      <%= @trip_cost.trip_id %>
+    </div>
+
+    <div class="row">
+      <strong>One:</strong>
+      <%= @trip_cost.one %>
+    </div>
+
+    <div class="row">
+      <strong>Two:</strong>
+      <%= @trip_cost.two %>
+    </div>
+
+    <div class="row">
+      <strong>Three:</strong>
+      <%= @trip_cost.three %>
+    </div>
+
+    <div class="row">
+      <strong>Four:</strong>
+      <%= @trip_cost.four %>
+    </div>
+
+    <div class="row">
+      <strong>Five:</strong>
+      <%= @trip_cost.five %>
+    </div>
+
+    <div class="row">
+      <strong>Six:</strong>
+      <%= @trip_cost.six %>
+    </div>
+
+    <div class="row">
+      <strong>Seven:</strong>
+      <%= @trip_cost.seven %>
+    </div>
+
+    <div class="row">
+      <strong>Eight:</strong>
+      <%= @trip_cost.eight %>
+    </div>
+
+    <div class="row">
+      <strong>Nine:</strong>
+      <%= @trip_cost.nine %>
+    </div>
+
+    <div class="row">
+      <strong>Ten:</strong>
+      <%= @trip_cost.ten %>
+    </div>
+
+  </div>
+</div>

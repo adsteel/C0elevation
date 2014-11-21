@@ -1,0 +1,36 @@
+<div class="container-fluid">
+
+	<div class="container email">
+
+		<p><%= @user.first %>, </p>
+
+		<p>Congratulations! You and adventure will soon be one.</p>
+		<p>It's never too early to start getting ready. Be sure to check what gear is required and
+		<% if @user.profile_complete? %>
+			update your emergency contant information, if needed,
+		<% else %>
+			 to fill out your complete emergency contact information 
+		<% end %>
+			<%= link_to 'here', url_for( controller: 'users',
+																								action: 'show', id: @user.id,
+																								only_path: false) %>.
+		Your <% @order_items.count > 1 ? 'first' : '' %> trip is only <%= time_ago_in_words(@order_items.first.start_date) %> away!</p>
+		<p>
+			<% if @order_items.count > 1 %>
+				<ol>
+					<% @order_items.each do |i| %>
+						<li><%= render 'client_trip_details', :i => i %></li>
+					<% end %>
+				</ol>
+			<% else %>
+				<%= render 'client_trip_details', :i => @order_items.first %>
+			<% end %>
+		</p>
+
+		<p><br>Thank you for choosing coElevation.com. Enjoy your trip!</p>
+		
+		<%= render 'shared/ce_mail_signature' %>
+
+	</div>
+
+</div>

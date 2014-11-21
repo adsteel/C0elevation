@@ -1,0 +1,21 @@
+<% provide(:title, "Edit trip image") %>
+
+<div class="container-fluid">
+
+	<div class="container trip-images admin">
+
+		<h1>Edit image</h1>
+		<%= link_to "All images", trip_images_path(@trip), class: "btn btn-success" %> 
+		<%= render 'admin/shared/admin_breadcrumbs' %>
+
+		<p>for <%= @trip.tag_line %></p>
+
+		<div class="row">
+		<%= image_tag @image.asset.url(:medium) %>
+		</div>
+
+		<%= render 'form' %>
+
+	</div>
+
+</div>

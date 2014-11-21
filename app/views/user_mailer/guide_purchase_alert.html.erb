@@ -1,0 +1,20 @@
+<div class="container-fluid">
+
+	<div class="container email">
+
+	<p><h2>Hello. You have trips.</h2></p>
+
+	<p><%= @guide.first %>, you've been booked!</p>
+
+	<p>Trip</p>
+	<p><%= @order_item.date_range + " : " + @order_item.tag_line %></p>
+	<p>Client: <%= @client.full_name %></p>
+	<p>Primary email: <%= @client.email %></p>
+	<p>Number of participants: <%= @order_item.trip_attendance %></p>
+	<p>Your take-home: <strong><%= @order_item.total_paid_to_guide %></strong> + tips.</p>
+
+		<%= render 'shared/ce_mail_signature' %>
+
+
+	</div>
+</div>

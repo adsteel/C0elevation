@@ -1,0 +1,37 @@
+<% provide(:title, "Order Updated") %>
+
+<section class="scaffold">
+	<div class="pure-grid-r">
+		<div class="pure-u-1-4">
+			&nbsp;
+		</div>
+		<div class="pure-u-1-2">
+			<% if @order_item.cancelled? %>
+
+				<h1 class="is-center">Trip cancelled</h1>
+					<div class="row">
+						<br>You have cancelled your trip.</div>
+					<div class="row" >
+						To review this and all other orders in the future, you can see all of your trip details on your profile page.
+					<div class="row is-center">
+						<br><%= link_to 'Profile', profile_path, :class => "pure-button" %>.</div>				
+
+			<% else %>
+
+				<h1 class="is-center">Trip Updated</h1>
+				<div class="row">
+					<br>Your trip has been updated. You should receive an email with your new trip details in a few minutes.</div>
+				<div class="row" >
+					To review this and all other orders in the future, you can see all of your trip details on your profile page <%= link_to 'here', profile_path %>.</div>
+				<div class="row">
+					Thank you for choosing coElevation, and happy adventuring!</div>
+				<div class="row is-center">
+					<br><%= link_to 'See trip details', profile_path, :class => "pure-button" %>.</div>
+
+			<% end %>
+		</div>
+		<div class="pure-u-1-4">
+			&nbsp;
+		</div>
+	</div>
+</section>

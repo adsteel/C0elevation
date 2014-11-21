@@ -1,0 +1,76 @@
+<% provide(:title, "New trip dates") %>
+
+<div class="container-fluid">
+
+	<div class="container trip-dates admin">
+
+		<h1>Add date offerings</h1>
+		<h4 class="is-center">For: <%= @trip.tag_line %></h4>
+		<div class="row is-center">
+			<em>Guide: <%= @trip.guide ? @trip.guide_full_name : "n/a" %> | Company: <%= @trip.company_name %></em>
+		</div>
+		
+		<%= link_to 'All dates for this trip', trip_trip_dates_path(@trip), class: "btn btn-success" %> 
+		<%= link_to 'Back to trip', admin_trip_path(@trip), class: "btn btn-success" %> 
+		<%= render 'admin/shared/admin_breadcrumbs' %>
+
+		<% if flash[:notice] %>
+			<div class="row">
+				<%= flash[:notice] %>
+			</div>
+		<% end %>
+
+		<div class="row">
+			<div class="col col-sm-8">
+				<%= form_for [@trip, @trip_date] do |f| %>
+					<% if @trip.length.downcase.gsub!(/\W+/, '') != "multiday" %>
+						<div class="row">
+							<%= f.date_select :start_date, { 	:start_year => Date.today.year,
+																:end_year => Date.today.year + 2,
+																:order => [:month, :day, :year] 
+															}, {
+																:class => ""
+																} %>
+						</div>
+					<% else %>
+						<div class="row">
+							<%= f.label :start_date, 'Start: ' %>
+							<%= f.date_select :start_date, { 	:start_year => Date.today.year,
+																:end_year => Date.today.year + 2,
+																:order => [:month, :day, :year] 
+															}, {
+																:class => ""
+																} %>
+						</div>
+						<div class="row">
+							<%= f.label :end_date, 'End: ' %>
+							<%= f.date_select :end_date, :order => [:month, :day, :year], 
+								:html=> { :class => "" } %>
+						</div>
+					<% end %>
+
+					<div class="row">
+						<%= f.label :start_time, "*Meeting time, First day".html_safe %>
+						<%= f.text_field :start_time %>
+						<br><br>
+					</div>
+
+					<% if @trip.length.downcase.gsub!(/\W+/, '') != "multiday" %>
+						<% @submit = 'Add date' %>
+					<% else %>
+						<% @submit = 'Add dates' %>
+					<% end %>
+
+					<%= f.submit @submit, :class => "btn btn-lg btn-primary" %><br>
+					or <%= link_to 'Cancel', admin_trip_path(@trip) %>
+				<% end %>
+			</div>
+			<div class="col col-sm-4">
+				<strong><%= pluralize(@trip_dates.count, 'time slot', 'time slots') %> offered</strong>
+				<% @trip_dates.each do |td| %>
+					<%= content_tag :p, td.date_range %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

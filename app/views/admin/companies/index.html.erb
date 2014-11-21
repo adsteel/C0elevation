@@ -1,0 +1,52 @@
+<% provide(:title, "All companies") %>
+
+<div class="container-fluid">
+
+	<section class="container companies admin">
+
+	<h1>Listing companies</h1>
+
+	<div class="row">
+		<%= link_to '+ Add Company', new_admin_company_path, class: "btn btn-success" %> 
+		<%= render 'admin/shared/admin_breadcrumbs' %>
+	</div>
+
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Owner</th>
+				<th>Contact name</th>
+				<th>Hq address</th>
+				<th>Hq city</th>
+				<th>Hq state</th>
+				<th>Country</th>
+				<th>Description</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @companies.each do |company| %>
+				<tr>
+					<td><%= image_tag(company.logo.url(:thumb) ) %></td>
+					<td><%= company.name %></td>
+					<td><%= phone_format(company.phone) %></td>
+					<td><%= company.email %></td>
+					<td><%= link_to company.owner_full_name, user_path(company.owner_id) %></td>
+					<td><%= company.contact_name %></td>
+					<td><%= company.hq_address %></td>
+					<td><%= company.hq_city %></td>
+					<td><%= company.hq_state %></td>
+					<td><%= company.country %></td>
+					<td><%= truncate(company.description) %></td>
+					<td><%= link_to 'Show', admin_company_path(company) %></td>
+					<td><%= link_to 'Edit', edit_admin_company_path(company) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>

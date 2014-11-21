@@ -1,0 +1,59 @@
+<h1>Listing users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Admin</th>
+      <th>Guide status</th>
+      <th>First</th>
+      <th>Last</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Birthday</th>
+      <th>Gender</th>
+      <th>Street address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Emergency first</th>
+      <th>Emergency last</th>
+      <th>Emergency relationship</th>
+      <th>Emergency phone</th>
+      <th>Emergency email</th>
+      <th>Emergency notes</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.admin %></td>
+        <td><%= user.guide_status %></td>
+        <td><%= user.first %></td>
+        <td><%= user.last %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.birthday %></td>
+        <td><%= user.gender %></td>
+        <td><%= user.street_address %></td>
+        <td><%= user.city %></td>
+        <td><%= user.state %></td>
+        <td><%= user.emergency_first %></td>
+        <td><%= user.emergency_last %></td>
+        <td><%= user.emergency_relationship %></td>
+        <td><%= user.emergency_phone %></td>
+        <td><%= user.emergency_email %></td>
+        <td><%= user.emergency_notes %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>

@@ -1,0 +1,75 @@
+<div class="row">
+	<div class="col-xs-12">
+		<h3>Trip <%= guide_item_counter + 1 %></h3>
+	</div>
+</div>
+<div class="row display-item">
+	<div class="col-md-2 cell">
+		<%= image_tag guide_item.trip.primary_image.asset.url(:thumb) if guide_item.primary_image %>
+	</div>
+
+	<div class="col-md-8 cell cell-right">
+		<% if guide_item.guide_confirmed.blank? %>
+			<div class="row detail">
+				<div class="col-xs-3"><%= link_to 'Confirm', confirm_guide_path(guide_item), class: "btn btn-success", confirm: "Confirm that you will work this trip " + guide_item.date_range + "?", method: :put %></div>
+				<div class="col-xs-9">Please confirm this trip and help us continue bringing clients to you!</div>
+			</div>		
+		<% end %>
+		<div class="row detail">
+			<div class="col-xs-3"><strong>when</strong></div>
+			<div class="col-xs-9"><%= guide_item.date_range + ", meeting at " + guide_item.start_time %></div>
+		</div>
+		<div class="row detail">
+			<div class="col-xs-3"><strong>what</strong></div>
+			<div class="col-xs-9"><%= guide_item.trip.tag_line.downcase.capitalize %></div>
+		</div>
+		<div class="row detail">
+			<div class="col-xs-3"><strong>trip type</strong></div>
+			<div class="col-xs-9"><%= guide_item.trip.type.capitalize %></div>
+		</div>
+		<div class="row detail">
+			<div class="col-xs-3"><strong>don't forget to bring </strong></div>
+			<div class="col-xs-9"><%= guide_item.trip.supplied_gear.split("\n").join(', ') %></div>
+		</div>
+		<div class="row detail">
+			<div class="col-xs-3"><strong>number of clients</strong> </div>
+			<div class="col-xs-9"><%= guide_item.purchased_trip_attendance %></div>
+		</div>
+		<div class="row detail">
+			<div class="col-xs-3"><strong>meeting location</strong></div>
+			<div class="col-xs-9"><%= guide_item.trip.meeting_description %>. 
+				<% if guide_item.trip.meet_address.length > 2 %>
+					<%= guide_item.trip.meet_address %>. 
+					Directions <%= link_to 'here', "http://maps.google.com/?q=#{guide_item.latitude},#{guide_item.longitude}", target: "blank", class: "blue-link" %>.
+				<% end %>
+			</div>
+		</div>
+		<div class="row detail">
+			<div class="col-xs-3"><strong>meeting time</strong></div>
+			<div class="col-xs-9"><%= guide_item.trip_date.start_time %></div>
+		</div>
+
+		<% guide_item.trip_date.buyers.each_with_index do |buyer, index| %>
+				<div class="row detail">
+					<div class="col-xs-3"><strong>client contact <%= index + 1 %></strong> </div>
+					<div class="col-xs-9"><%= buyer.full_name %></div>
+				</div>
+				<div class="row detail">
+					<div class="col-xs-3"><strong></strong> </div>
+					<div class="col-xs-9"><%= buyer.email %></div>
+				</div>
+				<div class="row detail">
+					<div class="col-xs-3"><strong></strong> </div>
+					<div class="col-xs-9"><%= phone_format(buyer.phone) %></div>
+				</div>
+				<div class="row detail">
+					<div class="col-xs-3"><strong></strong> </div>
+					<div class="col-xs-9">Party of <%= guide_item.payer_purchased_trip_attendance(buyer) %></div>
+				</div>
+		<% end %>
+
+		<div class="row detail">
+			View original trip details <%= link_to 'here', new_trip_order_item_path(guide_item.trip), class: "blue-link" %>.
+		</div>
+	</div>
+</div>

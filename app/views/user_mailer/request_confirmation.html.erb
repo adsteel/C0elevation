@@ -1,0 +1,21 @@
+<div class="container-fluid">
+
+	<div class="container email">
+
+		<p>Hello <%= @request.name %>,</p>
+
+		<p>Thanks for your interest!</p>
+
+		<p>Regarding your request for additional dates for <strong> <%= @trip.title + " - " + @trip.activity_title %> in <%= @trip.location_description %></strong>, you wrote:</p>
+
+		<p><em>"<%= simple_format(@request.message) %>"</em></p>
+
+		<p>And you are interested in this trip for <%= @request.requested_attendance %> people.</p>
+
+		<p>We will do some looking around to see if any high quality guides are available and will be in touch with you shortly with more information.</p>
+
+		<%= render 'shared/ce_mail_signature' %>
+
+	</div>
+
+</div>

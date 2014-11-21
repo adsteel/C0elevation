@@ -1,0 +1,54 @@
+<% provide(:title, "Images Show") %>
+
+<div class="container-fluid" id="mainWrapper">
+
+  <div class="container images-show admin">
+
+    <%= link_to 'Edit', edit_image_path(@image) %> |
+    <%= link_to 'Index', images_path %> | 
+    <%= link_to 'Admin panel', admin_panel_path %>
+
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <%= image_tag @image.asset.url(:thumb) %>
+    </p>
+
+    <p>
+      <strong>Activity:</strong>
+      <%= @image.activity_id %>
+    </p>
+
+    <p>
+      <strong>Location:</strong>
+      <%= @image.location_id %>
+    </p>
+
+    <p>
+      <strong>Feature:</strong>
+      <%= @image.feature_id %>
+    </p>
+
+    <p>
+      <strong>Route:</strong>
+      <%= @image.route_id %>
+    </p>
+
+    <p>
+      <strong>Client:</strong>
+      <%= @image.client_id %>
+    </p>
+
+    <p>
+      <strong>Guide:</strong>
+      <%= @image.guide_id %>
+    </p>
+
+    <p>
+      <strong>Trip:</strong>
+      <%= @image.trip_id %>
+    </p>
+
+  </div>
+
+</div>

@@ -1,0 +1,66 @@
+<% provide(:title, current_user.full_name) %>
+
+<section class="container-fluid">
+	<div class="container main-users">
+
+		<section id="account_information" class="account section">
+			<div class="row">
+				<div class="col-sm-4 cell">
+					<!-- nothing for now -->
+				</div>
+				<div class="col-sm-8 cell">
+					<h2>Account information <span class="h3-small">
+					<%= link_to edit_user_path(@user), class: "edit-link" do %>
+								<i class="fa fa-edit"></i>
+						<% end %>
+					</span></h2>
+				</div>
+			</div>
+
+			<div class="row grey-bg">
+				<div class="col-md-4 cell">
+					<h5>Message Board</h5>
+					<% unless !@user.profile_complete? %>
+						<div class="row">
+							<strong>Profile incomplete:</strong> Get ready for your trips <%= link_to 'here', edit_user_path(@user) %>.
+						</div>
+					<% end %>
+					<% if @guide_trips_to_confirm.length > 0 %>
+						<div class="row subheading warning">
+						<strong>Unconfirmed trips</strong>: You have <%= pluralize(@guide_trips_to_confirm.length, 'trip') %> to confirm.</div>
+					<% end %>
+
+				</div>
+				<div class="col-md-4 cell">
+					<h5>Personal Contact information</h5>
+					<p><strong>Name </strong><%= @user.full_name %></p>
+					<p><strong>Email </strong><%= @user.email %></p>
+					<p><strong>Phone </strong><%= phone_format(@user.phone) %></p>
+					<% if @user.full_address? %>
+						<p><strong>Address </strong><%= @user.full_address %></p>
+					<% end %>
+				</div>
+				<div class="col-md-4 cell">
+					<h5>Emergency Contact information</h5>
+					<p><strong>Name:</strong><%= @user.emergency_full_name %></p>
+					<p><strong>Relationship:</strong><%= @user.emergency_relationship %></p>
+					<p><strong>Phone:</strong><%= phone_format(@user.emergency_phone) %></p>
+					<p><strong>Email:</strong><%= @user.emergency_email %></p>
+					<p><strong>Additional Notes:</strong><%= @user.emergency_notes %></p>
+				</div>
+				
+			</div>
+		</section>
+
+		<% if @user.client? %>
+			<%= render partial: "client_panel" %>
+		<% end %>
+
+		<% if @user.guide? %>
+			<%= render partial: "guide_panel" %>
+		<% end %>
+
+	</div>
+
+</section>
+

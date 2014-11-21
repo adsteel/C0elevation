@@ -1,0 +1,15 @@
+<% provide(:title, "New trip") %>
+
+<div class="container-fluid">
+
+	<div class="container trips admin">
+
+	<h1>Create a new trip</h1>
+	<%= render 'admin/shared/admin_breadcrumbs' %>
+
+	<%= render 'form' %>
+
+	<%= link_to 'Cancel', admin_trips_path %>
+
+	</div>
+</div>

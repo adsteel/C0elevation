@@ -1,0 +1,21 @@
+<% if @order_item.cancelled? %>
+
+	<h2>Cancellation confirmation</h2>
+		<p><br>This email is confirming your cancellation of <%= @order_item.tag_line + " : " + @order_item.date_range %></p>
+		<p>To review this and all other orders in the future, you can see all of your trip details on your profile page,
+		<%= link_to 'here', url_for( controller: 'users',
+									action: 'show', id: @user.id,
+									only_path: false) %>.</p>
+<% else %>
+
+	<h2>Trip update confirmation</h2>
+	<p><br>This email is confirming your recent trip changes.</p>
+		<%= render 'client_trip_details', :i => @order_item %>
+	<p>To review this and all other orders in the future, you can see all of your trip details on your profile page <%= link_to 'here', url_for( controller: 'users',
+					action: 'show', id: @user.id,
+					only_path: false) %>.</p>
+	<p><br>Thank you for choosing coElevation, and happy adventuring!</p>
+
+		<%= render 'shared/ce_mail_signature' %>
+
+<% end %>

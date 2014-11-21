@@ -1,0 +1,43 @@
+<section id="booked_trips_display" class="guide-panel">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2>Upcoming bookings</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<% if @upcoming_guide_trips.length > 0 %>
+				<p class="subheading">
+					You are booked for <%= pluralize(@upcoming_guide_trips.count, 'upcoming trip', 'upcoming trips') %>.</p>
+				<% if @guide_trips_to_confirm.length > 0 %>
+				<p class="subheading warning">
+					<strong>Unconfirmed trips</strong>: You have <%= pluralize(@guide_trips_to_confirm.length, 'trip') %> to confirm.</p>
+				<% end %>
+				<%= render partial: "guide_item", collection: @upcoming_guide_trips %>
+			<% else %>
+				<p>No trips currently booked.</p>
+			<% end %>
+		</div>
+	</div>
+
+</section>
+
+<section id="posted_trips_display" class="guide-panel">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Posted trips</h2>
+
+			<% if @guide_posted_trips %>
+				<p class="subheading">You have posted <%= pluralize(@guide_posted_trips.count, 'trip offer', 'trip offers') %>.</p>
+				<div class="posting-summary grey-bg">
+				<ol>
+					<% @guide_posted_trips.each do |t| %>
+						<li><%= link_to t.tag_line, new_trip_order_item_path(t) %> (with <%= pluralize( t.trip_dates.count , 'date/timeslot offer', 'date/timeslot offers') %>)</li>
+					<% end %>
+				</ol>
+			<% else %>
+				<p>No trips currently posted. Post more trips <%= link_to 'here', new_trip_path %>.</p>
+			<% end %>
+		</div>
+	</div>
+</section>

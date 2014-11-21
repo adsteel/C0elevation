@@ -1,0 +1,34 @@
+<div class="row image-display">
+	<div class="col-sm-1">
+		id: <%= image_display.id %>
+		<br>
+		<%= link_to "Edit", edit_trip_image_path(@trip, image_display), class: "btn btn-primary" %>
+	</div>
+	<div class="col-sm-2">
+		<%= image_display.trip.slug %>
+	</div>
+	<div class="col-sm-2">
+		<%= link_to trip_image_path(@trip, image_display) do %>
+			<%= image_tag(image_display.asset.url(:thumb)) %>
+		<% end %>
+	</div>
+	<div class="col-sm-4">
+		<strong>Photo description:</strong><%= image_display.description %>
+		<br>
+		<strong>Ratio:</strong><%= image_display.ratio %>
+		<br>
+		<strong>Dimensions:</strong><%= "w: " + image_display.dimensions[0].to_s + " h: " + image_display.dimensions[1].to_s if image_display.dimensions %>
+	</div>
+	<div class="col-sm-1">
+		<% if !image_display.deletable? %>
+			Critical image for trip id: <%= image_display.critical_image_for_trip_id %>
+		<% end %>
+	</div>
+	<div class="col-sm-2">
+		<% if image_display.deletable? %>
+			<%= link_to "Delete", trip_image_path(@trip, image_display), class: "btn btn-warning", method: :delete, confirm: image_display.description.to_s + "\nAre you sure you want to delete this picture?" %>
+		<% else %>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XXX
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,77 @@
+<% provide(:title, @company.name) %>
+
+<div class="container-fluid">
+
+	<section class="container companies admin">
+
+
+		<div class="row" id="notice"><%= notice %></div>
+
+		<div class="row">
+			<h1><strong>Company: </strong><%= @company.name %></h1>
+		</div>
+
+		<div class="row">
+			<%= link_to 'Edit', edit_admin_company_path(@company), class: "btn btn-success" %> 
+			<%= render 'admin/shared/admin_breadcrumbs' %>
+		</div>
+
+		<div class="row">
+			<strong>logo:</strong>
+			<%= image_tag @company.logo.url(:thumb) %>
+		</div>
+
+		<div class="row">
+			<strong>Owner:</strong>
+			<%= link_to @company.owner_full_name, user_path(@company.owner_id) %>
+		</div>
+
+		<div class="row">
+			<strong>Contact name:</strong>
+			<%= @company.contact_name %>
+		</div>
+
+		<div class="row">
+			<strong>Phone:</strong>
+			<%= phone_format(@company.phone) %>
+		</div>
+
+		<div class="row">
+			<strong>Email:</strong>
+			<%= @company.email %>
+		</div>
+
+		<div class="row">
+			<strong>Hq address:</strong>
+			<%= @company.hq_address %>
+		</div>
+
+		<div class="row">
+			<strong>Hq city:</strong>
+			<%= @company.hq_city %>
+		</div>
+
+		<div class="row">
+			<strong>Hq state:</strong>
+			<%= @company.hq_state %>
+		</div>
+
+		<div class="row">
+			<strong>Country:</strong>
+			<%= @company.country %>
+		</div>
+
+		<div class="row">
+			<strong>Description:</strong>
+			<%= simple_format(@company.description, class: "description-paragraph") %>
+		</div>
+
+		<div class="row">
+			<strong>Default Refund Policy:</strong>
+			<%= simple_format(@company.refund_policy, class: "description-paragraph") %>
+		</div>
+
+
+	</section>
+
+</div>

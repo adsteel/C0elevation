@@ -1,0 +1,177 @@
+<% provide(:title, "Checkout") %>
+
+<section class="container-fluid orders">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 progress-bar">
+				<div class="row is-center progress-titles">
+					<div id="step-one-status" class="col-xs-4 progress-title">
+						Billing information
+					</div>
+					<div id="step-two-status" class="col-xs-4 progress-title">
+						Credit card information
+					</div>
+					<div id="step-three-status" class="col-xs-4 progress-title">
+						Confirm order
+					</div>
+				</div>
+				<div class="row bottom-steps">
+					<div id="step-one-indicator" class="col-xs-4 step-indicator">
+						&nbsp;
+					</div>
+					<div id="step-two-indicator" class="col-xs-4 step-indicator">
+						&nbsp;
+					</div>
+					<div id="step-three-indicator" class="col-xs-4 step-indicator">
+						&nbsp;
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row payment-steps">
+			<% if @order.errors.any? %>
+				<% @order.errors.each do |e| %>
+					<p>Error: <%= e %></p>
+				<% end %>
+			<% end %>
+			<div class="flash-container">
+				<% flash.each do |key, value| %> 
+					<%= content_tag(:div, value, class: "alert alert-#{key} ") %> 
+				<% end %> 
+			</div>
+			<%= form_for @order  do |f| %>
+				<div class="col-md-4 col-md-offset-4 main">
+					<% if @order.stripe_card_token.present? %>
+						<div class="row">
+							Your credit card information has been received.
+						</div>
+					<% else %>
+						<fieldset id="billing-information">
+							<div class="row instructions">
+								Please verify your billing details.
+							</div>
+							<div class="row form-group">
+								<%= label_tag :card_name, 'Name' %>
+								<%= text_field_tag :name, nil, name: nil, :placeholder => "name as it appears on card", data: { stripe: 'name' }, class: "form-control", id: 'card_name' %>
+							</div>
+							<div class="row form-group">
+								<%= label_tag :card_zip, 'Zip code' %>
+								<%= text_field_tag :address, nil, name: nil, :placeholder => "billing zip code", data: { stripe: 'address_zip' }, class: "form-control", id: "card_zip" %>
+							</div>
+							<div class="row is-center">
+								<a id="first_next" class="btn btn-default btn-lg">next <i class="fa fa-angle-double-right"></i></a>
+							</div>
+						</fieldset>
+
+						<fieldset id="payment-form">
+							<div class="row card-icons">
+								<%= image_tag('cc_icons/mastercard.png', alt: "mastercard", title: "Mastercard") %>
+								<%= image_tag('cc_icons/visa.png', alt: "visa", title: "Visa") %>
+								<%= image_tag('cc_icons/discover.png', alt: "discover", title: "Discover Card") %>
+								<%= image_tag('cc_icons/amex.png', alt: "amex", title: "American Express") %>
+								<%= image_tag('cc_icons/diners.png', alt: "diners", title: "Diner\'s") %>
+								<%= image_tag('cc_icons/jcb.png', alt: "jcb", title: "JCB", class: "hidden-xs") %>
+							</div>
+
+
+							<div class="row form-group">
+								<%= label_tag :card_number, 'Card number' %>
+								<%= text_field_tag :card_number, nil, name: nil, :placeholder => "debit or credit", data: { stripe: 'number' }, class: "form-control", id: "credit_card" %>
+							</div>
+							<div class="row instructions">
+								<%= label_tag :expiration_date, 'Expiration date' %>
+							</div>
+							<div class="row expiration-date">
+
+								<div class="form-group col-xs-6">
+									<%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", data: { stripe: 'exp-month' }, class: "form-control month", id: "card_month"} %>
+								</div>
+								<div class="form-group col-xs-4">
+									<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+7}, {name: nil, id: "card_year", data: { stripe: 'exp-year' }, class: "form-control", id: "card_year"} %>
+								</div>
+							</div>
+							<div class="row form-group">
+								<%= label_tag :cvc, 'Credit verification code' %>
+								<%= text_field_tag :card_code, nil, name: nil, :placeholder => "found on back of card", data: { stripe: 'cvc' }, class: "form-control", id: "cvc" %>
+							</div>
+							<div class="row is-center">
+								<a id="second_back" class="btn btn-default btn-lg"> <i class="fa fa-angle-double-left"></i> back</a>
+								<a id="second_next" class="btn btn-default btn-lg">next <i class="fa fa-angle-double-right"></i></a>
+							</div>
+						</fieldset>
+
+						<fieldset id="order-summary">
+							<div class="row">
+								<div class="col-md-12 order-total-container">
+									<div class="row order-summary-heading is-center">
+										<h3>Order summary</h3>
+									</div>
+									<div class="row subtotal">
+										<div class="pull-left">
+											Subtotal
+										</div>
+										<div class="pull-right">
+											<%= number_to_currency(current_user.services_total) %>
+										</div>
+									</div>
+									<div class="row">
+										<div class="pull-left">
+											Service taxes
+										</div>
+										<div class="pull-right">
+											<%= number_to_currency(current_user.service_taxes_total) %>
+										</div>
+									</div>
+									<div class="divider">
+										&nbsp;
+									</div>
+									<div class="row total">
+										<div class="pull-left">
+											<strong>Total</strong>
+										</div>
+										<div class="pull-right">
+											<strong><%= number_to_currency(current_user.order_total) %></strong>
+										</div>
+									</div>
+									<div class="row confirm">
+										<%= check_box_tag :terms_of_service %> <span class="agreement">I agree to the <%= link_to 'terms of service', @agreement.pdf.url , class: "blue-link", target: "blank", id: "terms_of_service" %></span>
+										<p class="must-agree"><em>You must agree to the terms of service</em></p>
+									</div>
+									<div class="row is-center">
+										<a id="third_back" class="btn btn-default btn-lg"><i class="fa fa-angle-double-left"></i> return</a>
+										<%= f.submit 'Purchase', class: "btn btn-primary btn-lg", id: "purchase-submit" %>
+									</div>
+									<div class="row final-error-messages">
+										<ul id="final-error-list">
+										</ul>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+
+					<% end %>
+
+					<div id="stripe_error">
+						<noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="spacer">
+		<div class="divider"></div>
+	</div>
+
+	<div class="row order-details">
+		<div class="col-md-8 col-md-offset-2">
+			<h2>Order details <%= link_to 'edit', cart_path(current_user), class: "edit-link" %></h2>
+			<em>All trip details will be emailed to you upon purchase</em>
+			<h6 class="review-subheading">You are purchasing <%= pluralize(@cart_items.count, 'trip') %>.</h6>
+
+			<%= render :partial => 'shared/order_item', :collection => @cart_items %>
+		</div>
+	</div>
+</section>

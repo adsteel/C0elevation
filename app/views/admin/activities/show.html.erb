@@ -1,0 +1,17 @@
+
+<% provide(:title, @activity.title ) %>
+
+<div class="container-fluid">
+
+	<div class="container acitivity-show admin">
+	  <div class="row">
+    	<h2><strong>Title:</strong> <%= @activity.title %></h2>
+      <p><strong>Description:</strong> <%= @activity.description %></p>
+    </div>
+
+    <div class="row">
+			<%= link_to 'Edit Activity', edit_admin_activity_path(@activity), class: 'btn btn-success' %> |
+			<%= render 'admin/shared/admin_breadcrumbs' %>
+		</div>
+	</div>
+</div>

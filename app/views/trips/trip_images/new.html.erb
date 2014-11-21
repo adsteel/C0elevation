@@ -1,0 +1,17 @@
+<% provide(:title, "Add trip image") %>
+
+<div class="container-fluid">
+
+	<div class="container trip-images admin">
+
+		<h1>New image</h1>
+		<p>for <%= @trip.title %></p>
+
+		<%= link_to "All images", trip_images_path(@trip), class: "btn btn-success" %> 
+		<%= render 'admin/shared/admin_breadcrumbs' %>
+
+		<%= render 'form' %>
+
+	</div>
+
+</div>

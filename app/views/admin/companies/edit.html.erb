@@ -1,0 +1,22 @@
+<% provide(:title, "Edit " + @company.name) %>
+
+<div class="container-fluid">
+
+	<section class="container companies admin">
+
+	<h1>Editing company</h1>
+	<%= link_to 'Index', admin_companies_path, class: "btn btn-success" %>
+	<%= render 'admin/shared/admin_breadcrumbs' %>
+
+	<div class="row">
+		Current logo: <%= image_tag @company.logo.url(:thumb) %>
+	</div>
+	
+	<%= render 'form' %>
+
+	<div class="row">
+		<%= link_to 'Cancel', admin_company_path(@company) %> |
+	</div>
+
+	</section>
+</div>

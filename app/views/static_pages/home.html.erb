@@ -1,0 +1,206 @@
+<% content_for :head do %>
+	<%= stylesheet_link_tag "home" %>
+	<%= stylesheet_link_tag "responsiveslides" %>
+<% end %>
+
+<%= tag :meta, name: "Adventure trips in Colorado: fly fishing, biking and hiking, on your schedule.", published: Date.today.strftime("%m/%d/%Y") %>
+
+<section class="container-fluid" id="slider">
+	<ul class="rslides home">
+		<li>
+			<%= image_tag("heroes/couple_sunset_hero_lg.jpg", class: "visible-md visible-lg") %>
+			<%= image_tag("heroes/couple_sunset_hero_sm.jpg", class: "visible-sm") %>
+			<%= image_tag("heroes/couple_sunset_hero_xs.jpg", class: "visible-xs") %>
+				<!--                      -->
+				<!-- FOR NON PHONE SIZES  -->
+				<!--                      -->
+
+			<div class="slider-tag hidden-xs">
+				<div class="activity">Professional Guides</div>
+				<div class="sub-heading">
+					Fly Fishing <i class="fa fa-angle-double-right"></i> Backpacking <i class="fa fa-angle-double-right"></i> Rock Climbing <i class="fa fa-angle-double-right show-me"></i> <br class="hide-me"> Mountaineering <i class="fa fa-angle-double-right"></i> Trekking </div>
+				<br>
+				<div class="row">
+					<a class="btn btn-info btn-lg" href="#private" id="see_private">Private Trips</a> 
+					<a class="btn btn-info btn-lg" href="#group" id="see_group">Group Trips</a>
+				</div>
+			</div>
+
+				<!--                    -->
+				<!--  FOR PHONE SIZES   -->
+				<!--                    -->
+			<div class="welcome-mat visible-xs">
+				<div class="welcome">Welcome to coElevation.com</div>
+			</div>
+			<div class="slider-tag visible-xs">
+				<div class="activity">Professional Guides</div>
+				<div class="sub-heading">
+					<i class="fa fa-angle-double-left"></i> Fly Fishing <i class="fa fa-angle-double-right"></i><br>
+					<i class="fa fa-angle-double-left"></i>  Backpacking <i class="fa fa-angle-double-right"></i><br>
+					<i class="fa fa-angle-double-left"></i>  Rock Climbing <i class="fa fa-angle-double-right show-me"></i> <br class="hide-me"><br>
+					<i class="fa fa-angle-double-left"></i>  Mountaineering <i class="fa fa-angle-double-right"></i><br>
+					<i class="fa fa-angle-double-left"></i>  Trekking <i class="fa fa-angle-double-right"></i>
+				</div>
+				<br>
+				<div class="row">
+					<a class="btn btn-info btn-lg" href="#private" id="see_private_phone">Browse Private Trips</a> <a class="btn btn-info btn-lg" href="#group" id="see_group_phone">Browse Group Trips</a>
+				</div>
+			</div>
+
+				<!--                    -->
+				<!--        END         -->
+				<!--                    -->
+				
+		</li>	
+	</ul>
+</section>
+
+<section class="container-fluid display-shelf private">
+	<div class="container">
+
+		<a id="private"></a>
+		<div class="row title">
+			<h2>2014 Private Trips</h2>
+			<h4>Make the most of your time.</h4>
+		</div>
+
+		<div class="row grey-bar"></div>
+
+		<div class="row of-pictures">
+			<%= square_right(@tenmile_mb)%>
+			<%= long_right(@apex_longs_1_day, "black-text")%>
+		</div>
+		<div class="row of-pictures">
+			<%= square_right(@apex_longs_2_day) %>
+			<%= square_right(@tenmile_fly) %>
+			<div class="col-sm-4 item hidden-xs">
+				<%= image_tag "activity_icons/rock_climbing_3x2_2.jpg" %>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<section class="jumbotron first-ribbon">
+
+	<div class="first-cell vert-pic one">
+		<%= image_tag("teasers/woman_leading_vertical_med.jpg") %> 
+	</div>
+	<div class="first-cell vert-pic two hidden-xs">
+		<%= image_tag("teasers/happy_fisher_vertical_med.jpg") %> 
+	</div>
+	<div class="first-cell vert-pic three hidden-xs">
+		<%= image_tag("teasers/friend_circle_vertical_med.jpg") %> 
+	</div>
+
+	<div class="first-cell content">
+		<div class="floating">
+			<div class="call-to-action">
+				<span class="big-words hidden-xs">The Best Guides In Colorado and Nepal.</span><br><br>
+				<span class="words hidden-xs">
+					fly fishing<br>
+					backpacking<br>
+					private trips<br>
+					trekking<br>
+					climbing<br>
+					group trips<br>
+					mountain biking<br>
+					mountaineering<br><br>
+				</span>
+				<span class="words visible-xs">
+					fly fish<br>
+					backpack<br>
+					mountain bike<br>
+					private trips<br>
+					trek<br>
+					rock climb<br>
+					group trips<br>
+					mountain climb<br><br>
+				</span>
+				<span class="big-words hidden-xs">Connect. Explore. Repeat.</span>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+<section class="container-fluid display-shelf groups">
+	<div class="container">
+
+		<a id="group"></a>
+		<div class="row title group">
+			<h2>2014 Group Trips</h2>
+			<h4>Experience something new and exciting.</h4>
+		</div>
+
+		<div class="row grey-bar"></div>
+
+		
+		<div class="row of-pictures">
+			<%= square_right(@apex_basic_rock, "black-text")%>
+			<%= long_right(@everest_trek, "white-text", "overlay-black")%>
+		</div>
+		<div class="row of-pictures">
+			<%= square_right(@manaslu_trek) %>
+			<%= square_right(@tenmile_mb_group) %>
+		  <%= square_right(@langtang_trek) %>		
+		</div>
+	</div>
+</section>
+
+<a id="testimonials"></a>
+<div class="row title last-ribbon">
+	<div class="bar quarter visible-xs"></div>
+	<h2>See what people are saying about coElevation.com</h2>
+</div>
+
+<div class="bar quarter"></div>
+
+<section class="jumbotron second-ribbon">
+	<%= image_tag("heroes/flatirons_perfect_hero_lg.jpg", class: "hidden-xs hidden-sm hidden-md") %>
+	<%= image_tag("heroes/flatirons_perfect_hero_md.jpg", class: "visible-sm visible-md") %>
+	<%= image_tag("heroes/flatirons_perfect_hero_sm.jpg", class: "visible-xs") %>
+	<div class="ribbon-overlay">
+		<div class="testimonial">
+			<ul class="rslides home">
+				<li>
+					<span class="quote">“The Best Trip Ever!”</span>
+					<span class="quote-author"> - Cedar Brant</span>
+			  </li>
+				<li>
+					<span class="quote">“Unbeatable trek, unbeatable company!”</span>
+					<span class="quote-author">- Ashley Kaplan </span>
+			  </li>
+				<li>
+					<span class="quote">“Astounding.”</span>
+					<span class="quote-author"> - Hilary Derrick </span>
+			  </li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<% content_for :foot do %>
+	<script>
+		$(function() {
+			$(".rslides").responsiveSlides({
+				auto: true,             // Boolean: Animate automatically, true or false
+				speed: 500,            // Integer: Speed of the transition, in milliseconds
+				timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
+				pager: true,           // Boolean: Show pager, true or false
+				nav: false,             // Boolean: Show navigation, true or false
+				random: false,          // Boolean: Randomize the order of the slides, true or false
+				pause: false,           // Boolean: Pause on hover, true or false
+				pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+				prevText: "Previous",   // String: Text for the "previous" button
+				nextText: "Next",       // String: Text for the "next" button
+				maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+				navContainer: "",       // Selector: Where controls should be appended to, default is after the "ul"
+				manualControls: "",     // Selector: Declare custom pager navigation
+				namespace: "rslides",   // String: Change the default namespace used
+				before: function(){},   // Function: Before callback
+				after: function(){}     // Function: After callback
+			});
+		});
+	</script>
+<% end %>

@@ -1,0 +1,43 @@
+<div class="row display-item">
+	<div class="col-md-2 cell">
+		<%= image_tag client_item.trip.primary_image.asset.url(:thumb) if client_item.trip.primary_image %>
+	</div>
+
+	<div class="col-md-8 cell cell-right">
+		<div class="row detail">
+			<div class="col-xs-3"><strong>when</strong></div>
+			<div class="col-xs-9"><%= client_item.date_range %></div>
+		</div>
+		<div class="row detail">
+			<div class="col-xs-3"><strong>what</strong></div>
+			<div class="col-xs-9"><%= client_item.trip.tag_line.downcase.capitalize %></div>
+		</div>
+		<div class="row detail">
+			<div class="col-xs-3"><strong>number of people</strong></div>
+			<div class="col-xs-9"><%= client_item.payer_purchased_trip_attendance(current_user) %></div>
+		</div>
+		<% if client_item.guide %>
+			<div class="row detail">
+				<div class="col-xs-3"><strong>your guide</strong> </div>
+				<div class="col-xs-9"><%= client_item.guide_full_name.downcase.capitalize %></div>
+			</div>
+		<% end %>
+		<div class="row detail">
+			<div class="col-xs-3"><strong>don't forget to bring </strong></div>
+			<div class="col-xs-9"><%= client_item.trip.required_gear.split("\n").join(', ') %></div>
+		</div>
+		<div class="row detail">
+			<div class="col-xs-3"><strong>meeting location</strong></div>
+			<div class="col-xs-9"><%= client_item.trip.meeting_description %>. 
+			<% if client_item.trip.meet_address.length > 2 %> Directions <%= link_to 'here', "http://maps.google.com/?q=#{client_item.latitude},#{client_item.longitude}", target: "blank", class: "blue-link" %>.<% end %></div>
+		</div>
+		<div class="row detail">
+			<div class="col-xs-3"><strong>meeting time</strong></div>
+			<div class="col-xs-9"><%= client_item.trip_date.start_time %></div>
+		</div>
+
+		<div class="row detail">
+			View original trip details <%= link_to 'here', new_trip_order_item_path(client_item.trip), class: "blue-link" %>.
+		</div>
+	</div>
+</div>

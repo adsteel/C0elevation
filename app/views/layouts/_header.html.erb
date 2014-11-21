@@ -1,0 +1,105 @@
+<header id="header">
+	<section class="top-header">
+		<div class="container-fluid">
+			<div class="container">
+				<div class="row upper-header">
+					<div class="col-sm-4 tag-line">
+						"Connecting you with adventure."
+					</div>
+					<div class="col-sm-4 social-icons">
+						<%= link_facebook('<i class="fa fa-facebook"></i>') %>
+						<%= link_twitter('<i class="fa fa-twitter"></i>') %>	
+						<%= link_instagram('<i class="fa fa-instagram"></i>') %>
+						<%= link_linkedin('<i class="fa fa-linkedin"></i>') %>
+					</div>
+					<div class="col-sm-4 user-info">
+						<% if signed_in? %>
+							<ul class="dropdown-ul">
+								<li class="dropdown account-details">
+									<%= link_to "#", class: "dropdown-toggle", data: { toggle: "dropdown" } do %>
+										Howdy, <%= current_user.first %> <span class="caret"></span>
+									<% end %>
+									<ul class="dropdown-menu dropdown-menu-right" role="menu">
+										<%= admin_page %>
+										<li><%= link_to 'My Account', profile_path(current_user) %> </li>
+										<li role="presentation" class="divider"></li>
+										<li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %> </li>
+									</ul>
+									<%= show_cart(@cart_items) %>
+								</li>
+							</ul>
+						<% else %>
+							<% unless staging? %>	
+							 <%= link_to " | Sign Up", new_user_registration_path, class: "account-details" %>
+							<% end %>
+							<%= link_to "Sign In&nbsp;".html_safe, new_user_session_path, class: "account-details" %>
+						<% end %> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="main-header">
+		<div class="container-fluid">
+			<div class="container">
+
+				<!--                      -->
+				<!-- FOR NON PHONE SIZES  -->
+				<!--                      -->
+
+				<div class="row main-header-row hidden-xs">
+					<div class="col-sm-4 logo">
+						<%= link_to home_path, id: "logo_link" do %><%= image_tag('logo_long_black.png') %><%end%>
+					</div>
+					<div class="col-sm-8 nav-primary">
+						<ul class="nav nav-pills">
+							<li><%= link_to "home", home_path %></li>
+							<li><%= link_to "faqs", faqs_path %></li>
+							<li><%= link_to "about us", about_path %></li> 
+							<li><%= link_to "contact", contact_path %></li>
+						</ul>
+					</div>
+				</div>
+
+				<!--                    -->
+				<!--  FOR PHONE SIZES   -->
+				<!--                    -->
+
+				<div class="row main-header-row visible-xs">
+					<div class="col-sm-4 logo">
+						<%= link_to home_path do %><%= image_tag('logo_long_black.png') %><%end%>
+					</div>
+					<div class="col-sm-8 nav-primary-phone">
+						<%= link_to home_path  do %>
+							<%= image_tag('logo_square_black_md.png') %>
+						<% end %>
+						<% if signed_in? %>
+							<ul class="dropdown-ul">
+								<li class="dropdown account-details">
+									<%= link_to "#", class: "dropdown-toggle", data: { toggle: "dropdown" } do %>
+										Hi, <%= current_user.first %> <span class="caret"></span>
+									<% end %>
+									<ul class="dropdown-menu dropdown-menu-right" role="menu">
+										<%= admin_page %>
+										<li><%= link_to 'Account', user_path(current_user) %> </li>
+										<li><%= show_cart(@cart_items) %></li>
+										<li role="presentation" class="divider"></li>
+										<li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %> </li>
+									</ul>
+								</li>
+							</ul>
+						<% else %>
+							<%= link_to "Sign In".html_safe, new_user_session_path, class: "sign-in account-details" %> 
+						<% end %> 
+					</div>
+				</div>
+
+				<!--                    -->
+				<!--        END         -->
+				<!--                    -->
+
+			</div>
+		</div>
+	</section>
+</header>

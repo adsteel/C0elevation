@@ -1,0 +1,10 @@
+<%= link_to new_trip_order_item_path(trip), class: text_color + " item-link" do %>
+	<div class="col-sm-4 item">
+		<%= image_tag trip.primary_image.asset.url(:medium) %>
+		<div class="overlay <%= overlay_color %>" ></div>
+		<div class="text-box bottom-right " + text_color>
+			<h1><%= trip.title %></h1>
+			<p class="hidden-xs"><%= trip.one_liner %></p>
+		</div>
+	</div>
+<% end %>

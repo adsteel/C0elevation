@@ -1,0 +1,208 @@
+<% provide(:title, @trip.tag_line) %>
+
+<div class="container-fluid">
+
+	<div class="container trips admin">
+		<h1><%= @trip.title %></h1>
+
+		<div class="row">
+		<%= link_to "Edit", edit_admin_trip_path(@trip), class: "btn btn-success" %> 
+		<%= link_to "See as Order Item", new_trip_order_item_path(@trip), class: "btn btn-success", target: "blank" %> 
+		<%= render 'admin/shared/admin_breadcrumbs' %>
+
+
+		</div>
+
+		<div class="row">
+			<div class="col-sm-8">
+				
+				<div class="row">
+					<% if @trip.primary_image %>
+						<%= link_to trip_image_path(@trip, @trip.primary_image) do %>
+							<%= image_tag @trip.primary_image.asset.url(:medium) %>
+						<% end %>
+					<% else %>
+						<em>No primary image set.</em>
+					<% end %>
+				</div>
+
+				<div class="row">
+					<% if @trip.banner_image %>
+						<%= link_to trip_image_path(@trip, @trip.banner_image) do %>
+							<%= image_tag @trip.banner_image.asset.url(:medium) %>
+						<% end %>
+					<% else %>
+						<em>No banner image set.</em>
+					<% end %>
+				</div>
+
+				<div class="row">
+					<strong>Title</strong> <%= @trip.title %>
+				</div>
+
+				<div class="row">
+					<strong>Trip id:</strong> <%= @trip.id %>
+				</div>
+
+				<div class="row">
+					<strong>Activity:</strong> <%= @trip.activity_title + " - id: " + @trip.activity_id.to_s %>
+				</div>
+
+				<div class="row">
+					<strong>Guide:</strong> <%= @trip.guide_full_name if @trip.guide %>
+				</div>
+
+				<div class="row">
+					<strong>Location:</strong> <%= @trip.location_description + " - id: " + @trip.location_id.to_s %>
+				</div>
+
+				<div class="row">
+					<strong>Best time of year</strong> <%= @trip.time_of_year %>
+				</div>
+
+				<div class="row">
+					<strong>Meeting description: </strong> <%= @trip.meeting_description %>
+				</div>
+
+				<div class="row">
+					<strong>Meeting address: </strong> <%= @trip.meet_address %>
+				</div>
+
+				<div class="row">
+					<strong>Meeting Latitude:</strong> <%= @trip.latitude %>
+				</div>
+
+				<div class="row">
+					<strong>Meeting Longitude:</strong> <%= @trip.longitude %>
+				</div>
+
+				<div class="row">
+					<strong>What to bring:</strong> <%= make_list(@trip.required_gear) %>
+				</div>
+
+				<div class="row">
+					<strong>What's supplied:</strong> <%= make_list(@trip.supplied_gear) %>
+				</div>
+
+				<div class="row">
+					<strong>Special Directions:</strong> <%= @trip.special_directions %>
+				</div>
+
+				<div class="row">
+					<strong>One liner</strong><%= @trip.one_liner if @trip.one_liner %>
+				</div>
+
+				<div class="row">
+					<strong>Short description</strong><%= @trip.short_description if @trip.short_description %>
+				</div>
+
+				<div class="row">
+					<strong>Description:</strong> <%= simple_format(@trip.description, class: "description-paragraph") %>
+				</div>
+
+				<div class="row">
+					<strong>Itinerary:</strong> <%= simple_format(@trip.itinerary, class: "description-paragraph") %>
+				</div>
+
+				<div class="row">
+					<strong>Refund Policy:</strong> <%= simple_format(@trip.refund_policy, class: "description-paragraph") %>
+				</div>
+
+				<div class="row">
+					<strong>Created:</strong> <%= @trip.created_at.strftime "on %m-%d-%y at %H:%M" %>
+				</div>
+
+				<div class="row">
+					<strong>Last Updated:</strong> <%= @trip.updated_at.strftime "on %m-%d-%y at %H:%M" %>
+				</div>
+
+				<div class="row">
+					<strong>Company:</strong> <%= @trip.company_name + " - id: " + @trip.company_id.to_s %>
+				</div>
+
+				<div class="row">
+					<strong>Length of trip:</strong> <%= @trip.length %>
+				</div>
+
+				<div class="row">
+					<strong>Length description:</strong> <%= @trip.length_description %>
+				</div>
+
+				<div class="row">
+					<strong>Difficulty:</strong> <%= @trip.difficulty %>
+				</div>
+
+				<div class="row">
+					<strong>Skill level:</strong> <%= @trip.skill_level %>
+				</div>
+
+				<div class="row">
+					<strong>Attendance:</strong> <%= @trip.min.to_s + " - " + @trip.max.to_s %>
+				</div>
+
+				<div class="row">
+					<strong>Type: </strong> <%= @trip.type %>
+				</div>
+				
+				<div class="row">
+					<strong>Service tax: </strong> <%= @trip.service_tax %>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="row">
+					<h4>Recent date adds</h4>
+					<% if @last_dates.length > 0 %>
+						<% @last_dates.each do |d| %>
+							<%= d.date_range %><br>
+						<% end %>
+						<br><%= link_to 'See all dates', trip_trip_dates_path(@trip), class: "btn btn-success" %>
+					<% else %>
+						No dates yet.
+						<br><%= link_to 'Add a date', new_trip_trip_date_path(@trip), class: "btn btn-success" %>
+					<% end %>					
+				</div>
+				<div class="row">
+					<h4>Recent image adds</h4>
+					<% if @last_images.length > 0 %>
+						<% @last_images.each do |i| %>
+							<br><%= image_tag i.asset.url(:thumb) %>
+							<br>description: <%= i.description %>
+							<br>ratio: <%= i.ratio %>
+							<br>
+						<% end %>
+						<br><%= link_to 'See all pictures', trip_images_path(@trip), class: "btn btn-success" %>
+					<% else %>
+						No images yet.
+						<br><%= link_to 'Add a picture', new_trip_image_path(@trip), class: "btn btn-success" %>
+					<% end %>
+				</div>
+				<div class="row">
+					<h4>Trip cost</h4>
+					<table>
+						<thead>
+							<tr>
+								<th># of ppl</th>
+								<th>$/person</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @cost_columns.each do |n| %>
+								<tr>
+									<td><%= n %></td>
+						            <td><%= @trip_cost.send(n) if (@trip_cost && @trip_cost.respond_to?(n)) %></td>
+						        </tr>
+						    <% end %>
+					    </tbody>
+					</table>
+					<br>
+					<% if @trip_cost %>
+						<%= link_to 'Edit', edit_trip_trip_cost_path(@trip, @trip_cost), class: "btn btn-success" %>
+					<% else %>
+						<%= link_to 'Create', new_trip_trip_cost_path(@trip), class: "btn btn-success" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

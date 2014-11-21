@@ -1,0 +1,15 @@
+<div class="container-fluid">
+
+	<div class="container email">
+
+	<p>Hello <%= @user.first %>,</p>
+
+	<p>Here are the trip details you requested.</p>
+
+	<%= render 'client_trip_details', :i => @order_item %>
+
+	</div>
+
+	<%= render 'shared/ce_mail_signature' %>
+
+</div>

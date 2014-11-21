@@ -1,0 +1,25 @@
+<% provide(:title, "Portal") %>
+
+<section class="apply-splash">
+	<div class="pure-g-r">
+		<div class="pure-u-1">
+			<h2 class="is-center">Connect with a company</h2>
+
+			<div class="row is-center">
+				Connect with the company or companies you work for so they can showcase your talents. Are you an <strong>independent guide or company owner</strong>? Create your own company to post trips.
+			</div>
+
+			<div class="row is-center">
+				<%= link_to 'Create a company', new_company_path, :class => 'pure-button' %>
+			</div>
+
+			<div class="row is-center">
+				&nbsp;
+			</div>
+
+			<div class="row is-center">
+				<%= link_to 'Connect with a company', new_company_guide_path, :class => 'pure-button'%>
+			</div>
+		</div>
+	</div>
+</section>

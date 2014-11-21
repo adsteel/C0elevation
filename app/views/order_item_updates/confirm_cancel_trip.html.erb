@@ -1,0 +1,38 @@
+<% provide(:title, "Confirm trip cancellation") %>
+
+<section class="scaffold">
+	<div class="pure-g-r">
+		<div class="pure-u-1-4">
+			&nbsp;
+		</div>
+		<div class="pure-u-1-2">
+			<h1 class="is-center">Are you sure?</h1>
+
+			<div class="row">
+				Cancelling this trip will result in a refund of $<%= @order_item.refund_total(@new_attendance) %> to the purchasing credit card.
+			</div>
+			<div class="row">
+				Please confirm your trip cancellation, or press the 'back' button.
+			</div>
+
+			<div class="row is-center">
+				<%= form_for @order_item, :url => {:controller => 'order_item_updates', :action => "cancel_participants"}, method: :post do |f| %>
+					<div class="row is-center">
+						<%= f.hidden_field :number_of_people, :value => @new_attendance %>
+					</div>
+
+					<div class="row is-center">
+						<%= f.submit 'Cancel Trip', :class => "pure-button pure-button-error" %>
+						<%= link_to 'Back', profile_path, :class => "pure-button" %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="row is-center">
+			
+		</div>
+		<div class="pure-u-1-4">
+			&nbsp;
+		</div>
+	</div>
+</section>			

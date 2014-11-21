@@ -1,0 +1,192 @@
+@import "control_panel";
+
+
+/* Home page */
+
+.rslides.home { position: relative; }
+.rslides.home img { height: 50%; }
+.rslides_tabs { display: none; }
+
+#slider { position:relative; padding:0; }
+.slider-tag { position:absolute; padding:30px 40px; width:50%; min-height: 24%;
+  margin:0 auto;  
+  background:$slider-tags-background; color: $slider-tags-color; border: 2px solid $slider-tags-border;
+  margin: -12% 0 0 -25%;
+  left: 50%; top: 50%;
+  font-weight: bold; text-transform: uppercase; text-align: center;
+}
+
+.slider-tag .activity { font-size: 300%; }
+.slider-tag .sub-heading { text-transform:lowercase; font-weight: normal; letter-spacing: .05em; }
+.slider-tag a { position: relative; display: block; width: 200px; margin: 0px 0 0 -100px; left: 50%; bottom: 20px; text-transform: lowercase; margin-top: 20px;}
+.slider-tag .hide-me { display: none; }
+
+.centered-btns_nav { visibility: hidden; }
+
+.container-fluid.display-shelf > .container { padding-left: 32px; padding-right: 26px; padding-bottom: 100px;}
+.title.row { text-align: center; margin-top: 80px; margin-bottom: 30px; }
+.divider.row { border: none; height: 1px; background-color: $grey; margin: 50px 0px; }
+.item { position: relative; padding: 0; margin: 0; padding-right: 3px; min-width: 150px; }
+.item h2 { text-transform: uppercase; }
+.item img { width: 100%; min-width: 150px; margin: 0; padding: 0; }
+.item-hover-white { background-color: $overlay-hover-white; }
+.item-hover-black { background-color: $overlay-hover-black; }
+.overlay { position: absolute; width: 99.6%; height: 98.8%; z-index: 4; top: 0; left: 0; }
+.overlay-white:hover { background-color: $overlay-hover-white; cursor: pointer; }
+.overlay-white:active { background-color: $overlay-active-white; }
+.overlay-black:hover { background-color: $overlay-hover-black; cursor: pointer; }
+.overlay-black:active { background-color: $overlay-active-black; cursor: pointer; }
+.text-box { z-index: 5; position: absolute; width: 100%; padding: 20px 20px; }
+.text-box > h1 { font-size: 260%; }
+.text-box:hover { cursor: pointer; }
+.text-box.white-text { color: $white; }
+.text-box.black-text { color: $black; }
+.text-box > a { margin-top: 20px; text-transform: uppercase; font-size: 75%; letter-spacing: .08em;}
+.arrow-circle { 
+	width: 40px; height: 40px; border-radius: 20px; margin-top: 10px; background-color: $ghost-red; float: right;
+}
+.arrow-circle i { color: white; position: relative; top: 3px; right: 9px; }
+
+.top-left { top: 0; left: 0; }
+.top-right { top: 0; right: 0; text-align: right}
+.bottom-left { bottom: 0; left: 0; }
+.bottom-right { bottom: 0; right: 0; text-align: right; }
+
+.first-ribbon { height: 530px; padding: 0px; margin-bottom:0; padding-top: 15px; color:$first-ribbon-color; background: $first-ribbon-background; }
+.first-ribbon h1 { font-size:2em; text-align: left; }
+
+.second-ribbon { padding: 0px; height: 500px; background-color: $white; position: relative; margin-bottom: -50px; overflow: hidden; }
+.second-ribbon img { width: 100%; position: absolute; float: bottom; bottom: 0px;}
+.second-ribbon .ribbon-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+.second-ribbon .testimonial { position: absolute; top: 30%; left: 5%; color: white; }
+.second-ribbon .quote { font-size: 250%; font-weight: bold; display: block; max-width: 80%; }
+.second-ribbon .quote-author { font-style: italic; font-size: 150%; margin-left: 40px; margin-top: 20px;}
+
+.jumbotron .first-cell {  margin-left: 15px; display: inline; }
+.jumbotron .vert-pic { height: 500px; overflow: hidden; float: left;}
+
+.jumbotron .vert-pic.one { width: 15%; }
+.jumbotron .vert-pic.two { width: 17%; }  
+.jumbotron .vert-pic.three { width: 19%; }  
+
+
+.jumbotron .content { min-height: 200px; width: 38%;  float: right; margin-right: 4%; }
+.jumbotron .content .floating { width: 100%; min-height: 300px; text-align: center;}
+.jumbotron .content .call-to-action { font-size: 150%; font-weight: bold; color: $white; letter-spacing: .2em; }
+.jumbotron .content .call-to-action .first { text-transform: uppercase; }
+.jumbotron .content .call-to-action .body {  white-space: pre-line; }
+
+/*  FAQs  */
+
+.panel-group { margin-top: 30px; margin-bottom: 80px; }
+.panel { margin-top: 30px; }
+.panel-title > a { text-transform: lowercase; letter-spacing: .08em; }
+.panel-title > a > .fa { font-size: 60%; padding-right: 5px; }
+.panel-body { margin-top: 5px; }
+
+
+/*  Contact Page  */
+
+p.contact-info { text-align: center; line-height: 2em; padding-left: 0px; margin-top: 10px; margin-bottom: 10px;}
+p.social-links { text-align: center; margin-top: 45px; padding-left: 0px;}
+
+.content-text .fa { font-size: 200%; margin: 0px 20px; }
+.fa-map-marker { color: $red; }
+
+.love { text-align: center; margin-top: 20px; margin-bottom: 30px; margin-top: 0px;}
+.love .fa { font-size: 100%; margin-left: 5px; margin-right: 5px; }
+
+
+
+/*  About Page  */
+
+.picture { border: solid black 1px; min-height: 300px; }
+.content-text.about p { padding-left: 30px; }
+
+
+/*  Guides apply  */
+
+.content-text.guides ul { list-style-type: square; list-style-position:inside;}
+.content-text.guides ul li { margin-top: 7px; margin-left: 10px; }
+.content-text.guides p { margin-top: 20px; }
+
+
+/* Device size specific configuration  */
+
+@media only screen and (min-width:992px) and (max-width:1199px) {
+  .slider-tag { width:70%; min-height: 32%; margin: -35% 0 0 -35%; top: 100%; padding-bottom: 40px; }
+  .slider-tag .sub-heading { margin-bottom: 30px; }
+  .slider-tag a.btn { position: relative; display: inline; margin: 0; margin-left: 30px; margin-right: 30px; left: 0; top: 0px; min-width: 200px; }
+  .slider-tag .hide-me { display: default; }
+
+  .text-box > h1 { font-size: 200%; color: $black;}
+  .text-box > h5 { font-size: 130%; color: $black }
+  .text-box > p { color: $black; }
+  .overlay { background-color: $overlay-hover-white; }
+  .second-ribbon .testimonial { top: 25%; left: 5%; }
+
+}
+
+@media only screen and (min-width:768px) and (max-width:991px) {
+  .slider-tag { width:70%; min-height: 32%; margin: -35% 0 0 -35%; top: 100%; padding-bottom: 40px; }
+  .slider-tag .sub-heading { margin-bottom: 30px; }
+  .slider-tag a.btn { position: relative; display: inline; margin: 0; margin-left: 30px; margin-right: 30px; left: 0; top: 0px; width: 200px; }
+  .slider-tag .hide-me { display: default; }
+
+  .text-box > h1 { font-size: 150%; color: $black; }
+  .text-box > h5 { font-size: 110%; color: $black }
+  .text-box > p { display: none; }
+  
+  .overlay { background-color: $overlay-hover-white; }
+
+  .jumbotron .first-cell.content { width: 30%;}
+
+  .second-ribbon .testimonial { top: 25%; left: 5%; }
+
+  .row.title { margin-top: 40px; }
+
+}
+
+@media only screen and (max-width:767px) {
+	/*  Home page  */
+
+  .welcome-mat .welcome {
+    position: absolute; top: 20px; left: 0; width: 100%;
+    font-size: 120%; color: $white;  text-align: center;}
+
+  .slider-tag { width:80%; min-height: 24%; margin: -40% 0 0 -40%; padding:30px 40px; top: 40%; }
+  .slider-tag .activity { font-size: 130%; margin-top: 0px;}
+  .slider-tag .sub-heading { font-size: 100%; margin-top: 10px;}
+
+  .text-box > h1 { font-size: 200%; color: $black; }
+  .text-box > h5 { font-size: 100%; color: $black; }
+  .text-box > p { color: $black; }
+  .overlay { background-color: $overlay-hover-white; }
+  .col-sm-8.item { margin-bottom: 4px;}
+
+  .row.title.title { margin-top: 20px; }
+  .row.title h2 { font-size: 160% }
+  .row.title h4 { font-size: 110%; }
+  .row.title.group { margin-top: 60px; }
+  .row.title.last-ribbon { margin-left: 0; margin-right: 0; margin-top: -80px; }
+
+  .first-ribbon { height: 430px;}
+ 
+  .jumbotron .first-cell { margin-left: 5px; }
+  .jumbotron .content { width: 40%; margin-top: 0px; white-space: normal;}
+  .jumbotron .vert-pic.one { width: 50%; }
+  .jumbotron .vert-pic.one img { height: 400px; }
+  .jumbotron .big-words { display: none; }
+  .jumbotron .words { font-size: 80%; }
+
+  .groups { margin-top: 40px;}
+
+  .second-ribbon { height: 200px; }
+  .second-ribbon .quote { font-size: 135%; }
+  .second-ribbon .quote-author { font-size: 110%; margin-left: 40px; margin-top: 20px;}
+
+}
+
+
+
+

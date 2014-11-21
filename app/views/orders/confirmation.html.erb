@@ -1,0 +1,20 @@
+<% provide(:title, "Order Confirmation") %>
+
+<section class="container-fluid orders">
+	<div class="container top">
+		<div class="row standard-main">
+			<div class="col-md-6 col-md-offset-3">
+				<h1 class="is-center">Woohoo!</h1>
+				<div class="row">
+					<p><span class="bigger">You're going on a trip!</span> You should receive an email with key trip details in a few minutes that will help you prepare for your adventure.</p>
+					<p>
+					To review this and all other orders in the future, please visit your <%= link_to 'profile page', profile_path(current_user), class: "blue" %>.</p>
+					<p>Thank you for choosing coElevation, and happy adventuring!</p>
+				</div>
+				<div class="row is-center">
+					<br><%= link_to 'See your trips', profile_path(current_user), :class => "btn btn-primary btn-lg" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

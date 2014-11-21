@@ -1,0 +1,64 @@
+<% provide(:title, "All Trips") %>
+
+<div class="container-fluid">
+
+	<div class="container trips admin">
+	
+		<h1>All trips</h1>
+
+		<div class="row">
+			<%= link_to 'New Trip', new_admin_trip_path, class: "btn btn-success" %> 
+			<%= render 'admin/shared/admin_breadcrumbs' %>
+		</div>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Primary Image</th>
+					<th>Banner Image</th>
+					<th>ID</th>
+					<th>Title</th>
+					<th>Activity</th>
+					<th>Guide</th>
+					<th>Company</th>
+					<th>Location</th>
+					<th>Min/Max</th>
+					<th>Type</th>
+					<th>length</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @trips.each do |trip| %>
+					<tr>
+						<td><%= link_to admin_trip_path(trip) do %>
+									<%= image_tag(trip.primary_image.asset.url(:thumb)) if trip.primary_image %>
+								<% end %>
+						</td>
+						<td><%= link_to admin_trip_path(trip) do %>
+									<%= image_tag(trip.banner_image.asset.url(:thumb)) if trip.banner_image %>
+								<% end %>
+						</td>
+						<td><%= trip.id %></td>
+						<td><%= link_to truncate(trip.title, length: 30), admin_trip_path(trip) %></td>
+						<td><%= trip.activity_title %></td>
+						<td><%= trip.guide_full_name if trip.guide %></td>
+						<td><%= trip.company.name %></td>
+						<td><%= trip.location_description %></td>
+						<td><%= trip.min.to_s + "/" + trip.max.to_s %></td>
+						<td><%= trip.type %></td>
+						<td><%= trip.length_description %></td>
+						<td><%= link_to 'Edit', edit_admin_trip_path(trip) %></td>
+						<td><%= link_to 'Add image', new_trip_image_path(trip) %></td>
+						<td><%= link_to('Delete', admin_trip_path(trip), method: :delete) if trip.deletable? %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+	</div>
+
+</div>

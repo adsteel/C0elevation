@@ -1,0 +1,17 @@
+<% anchor = "collapse_" + number %>
+<% href = "#collapse_" + number %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h5 class="panel-title">
+      <a data-toggle="collapse" data-parent="#accordion" href=<%= href %> >
+        <i class="fa fa-plus"></i> <%= question.html_safe %>
+      </a>
+    </h5>
+  </div>
+  <div id=<%= anchor %> class="panel-collapse collapse">
+    <div class="panel-body">
+      <%= simple_format answer.html_safe %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+@import "bootstrap-custom";
+@import "browser-reset";
+@import "font-awesome";
+@import "global"; 
+@import "static_pages";
+@import "header";
+@import "footer";
+@import "order_items";
+@import "devise";
+@import "cart";
+@import "partials";
+@import "orders";
+@import "admin";
+@import "jquery.jcrop";
+@import "users";
+@import "requests";
+@import "trip_costs";
+
+@font-face {
+    font-family: 'Corbel';
+    src: url('/assets/corbelz-webfont.eot');
+    src: url('/assets/corbelz-webfont.woff') format('woff'),
+         url('/assets/corbelz-webfont.ttf') format('truetype'),
+         url('/assets/corbelz-webfont.svg#webfont') format('svg');
+    font-weight: bold;
+    font-style: italic, oblique;
+}
+
+@font-face {
+    font-family: 'Corbel';
+    src: url('/assets/corbelb-webfont.eot');
+    src: url('/assets/corbelb-webfont.woff') format('woff'),
+         url('/assets/corbelb-webfont.ttf') format('truetype'),
+         url('/assets/corbelb-webfont.svg#webfont') format('svg');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Corbel';
+    src: url('/assets/corbeli-webfont.eot');
+    src: url('/assets/corbeli-webfont.woff') format('woff'),
+         url('/assets/corbeli-webfont.ttf') format('truetype'),
+         url('/assets/corbeli-webfont.svg#webfont') format('svg');
+    font-style: italic, oblique;
+}
+
+@font-face {
+    font-family: 'Corbel';
+    src: url('/assets/corbel-webfont.eot');
+    src: url('/assets/corbel-webfont.woff') format('woff'),
+         url('/assets/corbel-webfont.ttf') format('truetype'),
+         url('/assets/corbel-webfont.svg#webfont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,86 @@
+<footer>
+	<section class="container main-footer">
+		<div class="row">
+			<div class="col-sm-6 footer-links">
+				<div class="row">
+					<div class="col-md-4">
+						<ul class="set-1">
+							<li><%= link_to "Contact Us", contact_path %></li>
+							<li><%= link_to "FAQs", faqs_path %></li>
+							<li><%= link_to "About Us", about_path %></li> 
+						</ul> 
+					</div>
+					<div class="col-md-4">
+						<ul class="set-2">
+							<li><%= link_to "Privacy Policy", @privacy_policy.pdf_url, target: "blank" %></li>
+							<li><%= link_to "Terms of Service", @terms_of_service.pdf_url, target: "blank" %></li>
+							<li><%= link_to "Guides Wanted", guides_application_path %></li>
+						</ul>
+					</div>
+					<div class="col-md-4 visible-lg">
+						<ul class="set-3">
+							<li><%= link_facebook('Facebook') %></li>
+							<li><%= link_twitter('Twitter') %></li>
+							<li><%= link_instagram('Instagram') %></li>
+							<li><%= link_linkedin('LinkedIn') %></li>
+						</ul>
+					</div>
+			  </div>
+			</div>
+			<div class="col-sm-6 newsletter">
+				<h1>Stay in touch!</h1>
+				<h5>Be the first to hear about deals and updates.</h5>
+				<form class="form-inline" action="http://coelevation.us3.list-manage.com/subscribe/post?u=0f5569aca8068addfaddac81e&amp;id=b68977d253" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+					<fieldset>
+						<div  id="mc_embed_signup"><!-- class="pure-u-1" -->
+							<div class="form-group">
+								<label class="sr-only" for="email_address">email address</label>
+								<div class="input-group">
+									<input type="email" class="form-control" value="" name="EMAIL" sid="mce-EMAIL" placeholder="enter your email here">
+									<span class="input-group-btn">
+										<button type="submit" id="mc-embedded-subscribe" class="btn btn-primary" value="Subscribe" name="subscribe">SIGN UP</button>
+									</span>
+								</div>
+							</div>
+
+							<div>
+								<label for="mce-emailtype-0">
+									<input type="radio" value="html" name="emailtype" id="mce-emailtype-0" checked="checked" style="display:none;">
+								</label>
+								<label for="mce-emailtype-1">
+									<input type="radio" value="text" name="emailtype" id="mce-emailtype-1" style="display:none;">
+								</label>
+							</div>
+
+							<!-- Begin Bot Signup Deflection. Do Not Remove or Bots May Sign Up. -->
+							<div id="mce-responses" class="clear">
+								<div class="response" id="mce-error-response" style="display:none"></div>
+								<div class="response" id="mce-success-response" style="display:none"></div>
+							</div>
+							<!-- End -->
+
+							<!-- Mailchimp identifier -->
+							<div style="position: absolute; left: -5000px;"><input type="text" name="b_0f5569aca8068addfaddac81e_b68977d253" value=""></div>
+						</div>
+					</fieldset>
+				</form>
+	</section>
+
+	<section class="bottom-footer">
+		<div class="container-fluid">
+			<small class="copyright">Copyright 2014 coElevation.com. All rights reserved.<br />Boulder, CO</small>
+		</div>
+	</section>
+	
+	<!-- Google analytics code -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-52444759-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+</footer> 
+

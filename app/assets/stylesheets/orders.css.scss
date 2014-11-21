@@ -1,0 +1,73 @@
+.orders .instructions { margin-bottom: 10px; }
+
+.orders .card-icons { text-align: center; }
+
+.orders .card-icons img { width: 50px; padding: 0px 5px; margin-bottom: 20px; }
+
+.orders .expiration-date .form-group { padding-left: 0px; }
+
+.orders .expiration-date select { font-size: 1.1em; }
+
+.orders .form-control.btn { padding-bottom: 5px; }
+
+.orders .main { margin-top: 40px; }
+
+.orders .order-summary-heading { margin-top: 30px; }
+
+.orders .subtotal.row { margin-top: 30px; }
+
+.orders #order-summary .row { margin-bottom: 10px; margin-left: 0; margin-right: 0;}
+
+.orders #order-summary .total { margin-bottom: 30px; }
+
+.orders .progress-titles { margin-top: 40px; }
+
+.orders .step-indicator { border-bottom: solid 1px $lightgrey; height: 5px; margin-top: 5px;}
+
+.orders .highlighted { background-color: $red; border-bottom: solid 1px $red; }
+
+.orders .completed { background-color: $lightgrey; }
+
+.orders .progress-title.inactive { color: $lightgrey;  }
+
+.orders .payment-steps { height: 50vh; }
+
+.orders .spacer {margin: 40px 0px; clear: both;}
+
+.orders .order-details { margin-bottom: 40px; }
+
+.orders .review-subheading { margin: 20px 0px; }
+
+.orders .has-feedback { position: relative; }
+.orders .has-feedback .glyphicon { top: 20px; float: right; }
+.orders .has-feedback .glyphicon.glyphicon-ok { color: green; }
+
+.orders .confirm .agreement { margin-left: 15px;}
+.orders .confirm .must-agree { margin-left: 0px; margin-top: 10px; margin-bottom: 20px; }
+
+.orders .final-error-messages { color: red; }
+.orders .final-error-messages li { list-style: square; list-style-position: inside; }
+
+#final-error-list li:nth-of-type(1) { margin-top: 10px; }
+
+.orders .flash-container { text-align: center; color: red; margin: 10px 0px; padding: 5px 5px; }
+
+@media only screen and (min-width:992px) and (max-width:1199px) {
+
+
+}
+
+@media only screen and (min-width:768px) and (max-width:991px) {
+
+
+}
+
+@media only screen and (max-width:767px) {
+
+  .orders .divider { display: none; }
+  .orders .spacer {margin: 0px 0px; height: 140px; border-bottom: $faintgrey solid 1px;}
+
+}
+
+
+

@@ -1,0 +1,18 @@
+
+<% provide(:title, "Admin - Edit Activity") %>
+
+<div class="container-fluid">
+
+	<div class="container edit-activity admin">
+
+		<h1>Editing activity</h1>
+		<%= render 'admin/shared/admin_breadcrumbs' %>
+
+		<%= render 'form' %>
+
+		<%= link_to 'Cancel', admin_activity_path(@activity) %>
+
+	</div>
+
+
+</div>

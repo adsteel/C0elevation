@@ -1,0 +1,42 @@
+<p><strong><%= i.date_range %></strong>: <%= i.tag_line %></p>
+
+<% if i.guide && i.guide.user %>
+	<p><strong>Your guide</strong>: <%= i.guide_full_name %></p>
+<% end %>
+
+<p><strong># of participants</strong>: <%= i.purchased_trip_attendance %></p>
+
+<% if i.required_gear %>
+	<p><strong>Don't forget to bring:</strong></p>
+	<ul>
+		<% i.required_gear.split("\n").each do |r| %>
+			<li><%= r.strip %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<% if i.special_directions %>
+	<p><strong>Directions:</strong></p>
+	<ul>
+		<% i.special_directions.split("\n").each do |d| %>
+			<li><%= d.strip %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+
+<p><br><%= link_to 'View complete trip details',
+		url_for(	controller: 'order_items',
+					action: 'show', id: i.id,
+					only_path: false),
+		html_options = {
+			:style => "
+				border-radius: 5px;
+				text-decoration: none;
+				background: #06F;
+				color: white;
+				font-weight: 600;
+				font-size: 1em;
+				padding: 10px 10px;
+				margin-top: 1em;"} %>
+	</p>

@@ -1,0 +1,17 @@
+<% provide(:title, "Edit - " + @trip.tag_line) %>
+
+<div class="container-fluid">
+
+	<div class="container trips admin">
+
+		<h1>Edit your trip</h1>
+		<%= render 'admin/shared/admin_breadcrumbs' %>
+
+		<%= render 'form' %>
+
+		<div class="row">
+			<%= link_to 'Cancel', admin_trip_path(@trip) %>
+		</div>
+
+	</div>
+</div>

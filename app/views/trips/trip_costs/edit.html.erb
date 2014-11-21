@@ -1,0 +1,17 @@
+<% provide(:title, "Trip cost") %>
+
+<div class="container-fluid">
+
+  <div class="container edit trip-cost admin">
+
+
+	<h1>Editing trip_cost</h1>
+	<h4>for <%= @trip.title + " with company " + @trip.company.name %></h4>
+
+	<%= link_to 'Cancel', trip_trip_cost_path(@trip, @trip_cost), class: "btn btn-success", class: "btn btn-success" %> 
+	<%= render 'admin/shared/admin_breadcrumbs' %>
+
+	<%= render 'form' %>
+
+	</div>
+</div>

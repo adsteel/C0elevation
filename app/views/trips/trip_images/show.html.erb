@@ -1,0 +1,43 @@
+<% provide(:title, "Trip Images Index") %>
+
+<div class="container-fluid">
+
+	<div class="container trip-images admin">
+
+		<h1>Image</h1>
+
+		<%= link_to "+ New image", new_trip_image_path(@trip), class: "btn btn-success" %> 
+		<%= link_to "Edit", edit_trip_image_path(@trip, @image), class: "btn btn-success" %> 
+		<%= link_to "All images", trip_images_path(@trip), class: "btn btn-success" %> 
+		<%= link_to "Trip", admin_trip_path(@trip), class: "btn btn-success" %>
+		<%= render 'admin/shared/admin_breadcrumbs' %>
+
+		<div class="row">
+			<%= image_tag @image.asset.url(:thumb) %>
+		</div>
+
+		<div class="row">
+			Ratio: <%= @image.ratio %>
+		</div>
+
+		<div class="row">
+			Description: <%= @image.description %>
+		</div>
+
+		<div class="row">
+			Dimensions of original: <%= @image.dimensions if @image.dimensions %>
+		</div>
+
+		<div class="row">
+			Medium<br>
+			<%= image_tag @image.asset.url(:medium) %>
+		</div>
+
+		<div class="row">
+			Original<br>
+			<%= image_tag @image.asset.url(:original) %>
+		</div>
+
+	</div>
+
+</div>

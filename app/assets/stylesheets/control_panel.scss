@@ -1,0 +1,100 @@
+/*     COLOR DEFINITIONS     	   in rgb and hex codes  */
+
+$white: white;					/* rgb(255, 255, 255);   */
+$black: black;					/* rgb(0, 0, 0);         */
+$grey: #7E7E7E; 				/* rgb(126, 126, 126);   */
+$darkgrey: #ddd;
+$lightgrey: #666;
+$lightgrey: 	#bbb;
+$superlightgrey: #ddd;
+$faintgrey: #eee;
+$red: rgba(212, 55, 39, 1);
+$ghost-red: rgba(212, 55, 39, .8);
+$red-grey: #CBB8B7; 			
+$lime: #93CB3F;					
+$orange: #FFA000;
+$blue: #336699;
+$logo-blue: #336699;
+$lightblue: #5588bb;
+$darkblue: #114477;
+
+/*     CLASS COLORS      */
+
+/*        header         */
+
+$top-header-background: 						$white;
+$tag-line-color: 										$black;
+$main-header-background: 						$white;
+$top-header-color: 									$grey;
+$upper-header-border-bottom-color: 	$lightgrey;
+
+        /*    nav links    */
+		$nav-item-default-bg: 		none;
+		$nav-item-default-color: 	$black;
+
+		$nav-item-hover-bg: 		none;
+		$nav-item-hover-color: 		$black;
+		
+		$nav-item-active-bg: 		none;
+		$nav-item-active-color: 	$grey;
+		
+		$nav-item-visited-bg: 		$nav-item-default-bg;
+		$nav-item-visited-color: 	$nav-item-default-color;
+
+
+$universal-font-stack: Corbel, sans-serif;
+$link-color: $blue;
+$link-hover-color: $darkblue;
+
+/*    bootstrap buttons    */   /* see for the types http://getbootstrap.com/css/#buttons */
+
+$brand-primary: $blue;
+$brand-success: #5cb85c;
+$brand-info:    $red;
+$brand-warning: $red;
+$brand-danger:  $lightgrey;
+
+
+/*          slider          */
+
+$slider-tabs-color: rgba(255,255,255,.7);
+
+$bg: 0;
+$c: 255;
+$slider-tags-background: rgba(0, 0, 0, .4);
+$slider-tags-border: none; // rgba(255, 255, 255, .9);
+$slider-tags-color: rgb($c, $c, $c);
+
+
+/*       display-shelf       */
+$overlay-hover-white: rgba( 255, 255, 255, .6);
+$overlay-active-white: rgba( 255, 255, 255, .8);
+
+$overlay-hover-black: rgba( 0, 0, 0, .6);
+$overlay-active-black: rgba( 0, 0, 0, .8);
+
+/*    first section    */
+$colorado-adventure-background: $white;
+$colorado-adventure-tags-background: rgba(255,255,255,.7);
+
+
+/*    activities section    */
+$activities-background-color: $white;
+$activities-header-color: $black;
+$activities-location-color: $black;
+
+
+/*    first ribbon    */
+$first-ribbon-background: $black; 
+$first-ribbon-color: $lightblue;
+
+/*    second ribbon    */
+$second-ribbon-background: $grey;
+$second-ribbon-color: $red;
+
+/*    footer    */
+$newsletter-firstToHear-color: rgb(177,177,177);
+$footer-links-color: $grey;
+$main-footer-background: white;
+$bottom-footer-background: black;
+$bottom-footer-text-color: rgb(158,158,158);

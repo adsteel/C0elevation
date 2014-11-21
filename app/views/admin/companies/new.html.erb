@@ -1,0 +1,18 @@
+<% provide(:title, "New company") %>
+
+<div class="container-fluid">
+
+	<section class="container companies admin">
+
+		<h1>New company</h1>
+		<%= render 'admin/shared/admin_breadcrumbs' %>
+
+		<%= render 'form' %>
+
+		<div class="row">
+			<%= link_to 'Cancel', admin_companies_path %>
+		</div>
+
+	</section>
+
+</div>

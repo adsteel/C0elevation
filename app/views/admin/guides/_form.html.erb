@@ -1,0 +1,40 @@
+<%= form_for [:admin, @guide] do |f| %>
+	<% if @guide.errors.any? %>
+		<div id="error_explanation" class="row">
+			<h2><%= pluralize(@guide.errors.count, "error") %> prohibited this guide from being saved:</h2>
+
+			<ul>
+			<% @guide.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<div class="row is-center">
+		<br>
+		<%= f.label :image, "Upload a profile picture - 1:1 aspect ratio" %>
+		<%= f.file_field :image %>
+		<br>
+	</div>
+	
+	<div class="row is-center">
+		<%= f.label :user_id, "User" %>
+		<%= f.collection_select :user_id, @users, :id, :full_name, :prompt => "Select a user" %>
+	</div>
+	
+	<div class="row is-center">
+		<%= f.label :intro, 'Introduction' %><br>
+		<%= f.text_area :intro, :class => "guide-text-area", :placeholder => 'A short section to sell yourself. This is what people will see when they are looking at a trip. For now, this is a good place to highlight your best certifications or experience.' %>
+	</div>
+	<div class="row is-center">
+		<%= f.label :bio, 'Your bio and qualifications' %><br>
+		<%= f.text_area :bio, :class => "guide-text-area", :placeholder => 'A quick resume or summary of your experience and qualifications. Clients will have the option to link to your full bio and qualifications from the trip page.' %>
+	</div>
+	<div class="row">
+		<%= f.label :active, 'Active? (should it be visible?)' %><br>
+		<%= f.check_box :active %>
+	</div>
+	<div class="row is-center">
+		<%= f.submit 'Create guide profile', :class => "btn btn-lg btn-primary" %>
+	</div>
+<% end %>

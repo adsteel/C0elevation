@@ -1,0 +1,45 @@
+
+<% provide(:title, "Locations - Index" ) %>
+
+<div class="container-fluid">
+
+	<div class="container location-index admin">
+
+		<div class="row">
+			<h1>All locations</h1>
+
+			<div class="row">
+				<%= link_to '+ Add Location', new_admin_location_path, class: "btn btn-success" %>  
+				<%= render 'admin/shared/admin_breadcrumbs' %>
+			</div>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Description</th>
+						<th>Latitude</th>
+						<th>Longitude</th>
+						<th>Agency</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @locations.each do |location| %>
+						<tr>
+							<td><%= location.description %></td>
+							<td><%= location.latitude %></td>
+							<td><%= location.longitude %></td>
+							<td><%= location.agency_id %></td>
+							<td><%= link_to "Show", admin_location_path(location) %></td>
+							<td><%= link_to "Edit", edit_admin_location_path(location) %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>

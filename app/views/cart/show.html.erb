@@ -1,0 +1,61 @@
+<% provide(:title, "Cart Summary") %>
+
+<section class="container-fluid cart">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 cart heading">
+				<h1>My cart</h1>
+			</div>
+		</div>
+
+		<div class="col-md-8">
+			<%= render :partial => 'shared/order_item', :collection => @cart_items %>
+		</div>
+
+		<div class="col-md-3 col-md-offset-1">
+			<div class="cart-summary-container">
+
+				<div class="row summary-heading">
+					<h3 class="is-center">Summary</h3>
+				</div>
+
+				<div class="divider"></div>
+
+				<div class="row subtotal">
+					<div class="col-md-8">
+						Subtotal
+					</div>
+					<div class="col-md-4">
+						<span class="amt"><%= number_to_currency(current_user.services_total) %></span>
+					</div>
+				</div>
+
+				<div class="row service-tax">
+					<div class="col-md-8">
+						Service taxes
+					</div>
+					<div class="col-md-4">
+						<span class="amt"><%= number_to_currency(current_user.service_taxes_total) %></span>
+					</div>
+				</div>
+
+				<div class="divider"></div>
+
+				<div class="row grand-total">
+					<div class="col-md-8">
+						<strong>Total</strong>
+					</div>
+					<div class="col-md-4">
+						<strong><span class="amt"><%= number_to_currency(current_user.order_total) %></span></strong>
+					</div>
+				</div>
+
+				<div class="row button">
+					<%= link_to 'Checkout', checkout_path, class: "btn btn-lg btn-primary", id: "checkout_btn" %>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+ </section>

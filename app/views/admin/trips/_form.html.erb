@@ -1,0 +1,156 @@
+
+<%= form_for [:admin, @trip] do |f| %>
+	<% if @trip.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+
+			<ul>
+			<% @trip.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<%= f.label :title, "*Trip title" %><br>
+			<%= f.text_field :title %>
+		</div>
+	</div>
+	<div class="row stackable">
+		<div class="col-sm-4">		
+			<%= f.label :guide_id, "*Guide" %>
+			<%= f.collection_select :guide_id, @guides, :id, :full_name, :prompt => "Select a Guide", :include_blank => true %>
+		</div>
+		<div class="col-sm-4">
+			<%= f.label :company_id, "*Company" %>
+			<%= f.collection_select :company_id, @companies, :id, :name, :prompt => "Select a Company" %>
+		</div>
+		<div class="col-sm-4">
+			<%= f.label :activity_id, "*Activity" %>
+			<%= f.collection_select :activity_id, @activities, :id, :title, :prompt => "Select an Activity" %>
+		</div>
+		<div class="col-sm-4">
+			<%= f.label :difficulty, "*Difficulty" %>
+			<%= f.select :difficulty, @difficulties, :prompt => "Select a difficulty" %>
+		</div>
+		<div class="col-sm-4">
+			<%= f.label :skill_level, "*Skill level" %>
+			<%= f.select :skill_level, @skills, :prompt => "Select a skill level" %>
+		</div>
+		<div class="col-sm-4">
+			<%= f.label :location, "*Location" %>
+			<%= f.collection_select :location_id, @locations, :id, :description, :prompt => "Select a location" %>
+		</div>
+		<div class="col-sm-4">
+			<%= f.label :length, "*Length" %>
+			<%= f.select :length, @lengths, :prompt => "Select a length" %>
+		</div>
+		<div class="col-sm-4">
+			<%= f.label :length_description, "*Length Description".html_safe %><br>
+			<%= f.text_field :length_description, placeholder: "Example: 6-10 hours, depending on conditions" %>
+		</div>
+		<div class="col-sm-4">
+			<%= f.label :max, '*Maximum number of people' %><br>
+			<%= f.number_field :max %>
+		</div>
+		<div class="col-sm-4">
+			<%= f.label :min, 'Minimum number of people - Default is 1' %><br>
+			<%= f.number_field :min %>
+		</div>
+	</div>
+
+	<fieldset>
+		<legend>*Meeting location: Either lat/long or address are required</legend>
+		<div class="row">
+			<div class="col-sm-6">
+				<%= f.label :meeting_description, "*Description of meeting location".html_safe, placeholder: "e.g. Bob's bicycle shop" %><br>
+				<%= f.text_field :meeting_description %>
+			</div>
+			<div class="col-sm-6">
+				<%= f.label :meet_address, "Meeting address <em> - Created from lat/long, or vice versa </em>".html_safe  %><br>
+				<%= f.text_field :meet_address %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<%= f.label :latitude, "Meeting latitude <em> - Created from address, or vice versa </em>".html_safe %><br>
+				<%= f.text_field :latitude %>
+			</div>
+			<div class="col-sm-6">
+				<%= f.label :longitude, "Meeting longitude <em> - Created from address, or vice versa </em>".html_safe  %><br>
+				<%= f.text_field :longitude %>
+			</div>
+		</div>
+	</fieldset>
+
+	<div class="row">
+		<%= f.label :special_directions, "Special directions - <em> Additional directions that google wouldn't have".html_safe %><br>
+		<%= f.text_area :special_directions, placeholder: "Line breaks render as new lines." %>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-6">
+			<%= f.label :required_gear, "*Required gear" %><br>
+			<%= f.text_area :required_gear, placeholder: "This will be a list. Line breaks render as new bullet points." %>
+		</div>
+		<div class="col-sm-6">
+			<%= f.label :supplied_gear, "*Supplied gear" %><br>
+			<%= f.text_area :supplied_gear, placeholder: "This will be a list. Line breaks render as new bullet points." %>
+		</div>
+	</div>
+	<div class="row">
+		<%= f.label :one_liner, "*One liner" %><br>
+		<%= f.text_field :one_liner, placeholder: "An attractive one line teaser." %>
+	</div>
+	<div class="row">
+		<%= f.label :short_description, "*Short Description" %><br>
+		<%= f.text_area :short_description, placeholder: "This description will be what appears first when looking at your trip." %>
+	</div>
+	<div class="row">
+		<%= f.label :description, "*Trip Description" %><br>
+		<%= f.text_area :description, placeholder: "A full description of your trip. Saying the same thing as your short description is fine. Line breaks render as new lines.", class: "big" %>
+	</div>
+	<div class="row">
+		<%= f.label :itinerary, "*Itinerary" %><br>
+		<%= f.text_area :itinerary, placeholder: "This will be a list. Line breaks render as new bullet points.", class: "big" %>
+	</div>
+	<div class="row">
+		<%= f.label :time_of_year, "*Best time of year" %><br>
+		<%= f.text_area :time_of_year, placeholder: "Keep it short and simple" %>
+	</div>
+
+	<div class="row">
+		<%= f.label :refund_policy, "Refund policy" %><br>
+		<%= f.text_area :refund_policy, class: "big" %>
+	</div>
+
+	<div class="row">
+		<%= f.label :active, 'Active? (should it be visible?)' %><br>
+		<%= f.check_box :active %>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-4">
+			<fieldset>
+				<legend>Pick one of the following</legend>
+				<div class="row">
+					<%= f.label :group %><br>
+					<%= f.check_box :group %>
+				</div>
+				<div class="row">
+					<%= f.label :private %><br>
+					<%= f.check_box :private %>
+				</div>
+				<div class="row">
+					<%= f.label :course, 'Class or course' %><br>
+					<%= f.check_box :course %>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+	<div class="row">
+		<%= f.submit 'Submit', :class => "btn btn-lg btn-primary" %>
+	</div>
+<% end %>

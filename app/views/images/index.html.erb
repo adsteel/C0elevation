@@ -1,0 +1,53 @@
+<% provide(:title, "Images index") %>
+
+<div class="container-fluid" id="mainWrapper">
+
+  <div class="container images-index admin">
+
+    <h1>Listing images</h1>
+
+
+    <%= link_to 'New Image', new_image_path %> | 
+    <%= link_to 'Admin panel', admin_panel_path %>
+
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Activity</th>
+          <th>Location</th>
+          <th>Feature</th>
+          <th>Route</th>
+          <th>Client</th>
+          <th>Guide</th>
+          <th>Trip</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @images.each do |image| %>
+          <tr>
+            <td><%= image.asset.url(:thumb) %></td>
+            <td><%= image.activity_id %></td>
+            <td><%= image.location_id %></td>
+            <td><%= image.feature_id %></td>
+            <td><%= image.route_id %></td>
+            <td><%= image.client_id %></td>
+            <td><%= image.guide_id %></td>
+            <td><%= image.trip_id %></td>
+            <td><%= link_to 'Show', image %></td>
+            <td><%= link_to 'Edit', edit_image_path(image) %></td>
+            <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+  </div>
+
+</div>

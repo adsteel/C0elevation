@@ -1,0 +1,16 @@
+<section class="scaffold">
+	<p id="notice"><%= notice %></p>
+
+	<p><%= pluralize(@order_items.count, 'trip') %> in order # <%= @order.id.to_s + ", created at: " + @order.created_at.strftime('%m - %d - %y') %></p>
+
+	<ol>
+		<% @order_items.each do |i| %>
+			<li><%= link_to i.trip.activity.title, trip_path(i.trip) %></li>
+		<% end %>
+	</ol>
+
+	<p>
+		<%= link_to 'Edit', edit_order_path(@order) %> |
+		<%= link_to 'Back', orders_path %>
+	</p>
+</section>

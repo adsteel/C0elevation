@@ -1,0 +1,60 @@
+@import "control_panel";
+
+.top-header { padding:8px 0 5px 0; background:$top-header-background; border-bottom: 1px solid $upper-header-border-bottom-color; color: $top-header-color; font-weight: 200; font-size: 80%;}
+.top-header a { text-decoration: none; color: $grey;}
+.top-header a:hover { color: $darkblue; }
+.username { text-transform: capitalize; }
+.tag-line { font-style:italic; }
+.social-icons { text-align:center; letter-spacing:30px; }
+.user-info { text-align:right; float: right;}
+.user-info a:last-of-type { padding-left:10px; }
+
+.account-details { min-width: 50px; float: right; color: $black;}
+.dropdown-menu li { text-align: right; }
+
+.main-header { padding-top:0px; padding-bottom: 0; z-index:10; background:$top-header-background; }
+.main-header-row { position: relative; }
+.main-header { 
+-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
+-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
+box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.4);
+}
+.main-header.affix { top:0; width:100%; }
+.nav-col { position: relative; }
+.nav-primary { position:absolute; bottom: 0px; right: 0;}
+.nav-primary > ul { float:right; font-size:1.25em; margin-right:-15px; margin-top:5px; }
+.nav-primary > ul > li { margin-left:15px; color:$nav-item-default-color; font-size: 85%;}
+.nav-primary > ul > li > a 																		{	border-bottom: 2px solid $white; }
+.nav-primary > ul > li > a:hover { background: $nav-item-hover-bg; color: $nav-item-hover-color; 	border-bottom: 2px solid $red; }
+.nav-primary > ul > li > a:active { background: $nav-item-active-bg; color: $nav-item-active-color }
+.nav-primary > ul > li > a:visited { background: $nav-item-visited-bg; color: $nav-item-visited-color }
+.nav-primary > ul > li > a.selected { background: $nav-item-default-bg; color: $nav-item-default-color; border-bottom: 1px solid $black; cursor: default; }
+
+/* Device size specific configuration  */
+
+@media only screen and (min-width:992px) and (max-width:1199px) {
+
+}
+
+@media only screen and (min-width:768px) and (max-width:991px) {
+
+}
+
+@media only screen and (max-width:767px) {
+  .top-header { display: none; }
+  .logo { display: none; }
+  .main-header-row a { float: left; }
+
+  a.sign-in { float: right; }
+  .nav-primary-phone { text-align: center; font-size: 120%; line-height: 40px;}
+  .nav-primary-phone a { margin: 0px; margin-bottom: -14px;}
+  .nav-primary-phone img { height: 40px; }
+
+  .dropdown-menu > li > a { padding: 25px 15px; font-size: 150%; }
+  .dropdown-menu > li > a {  }
+  
+}
+
+
+
+

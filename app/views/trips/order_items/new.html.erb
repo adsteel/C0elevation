@@ -1,0 +1,371 @@
+<% provide(:title, @trip.tag_line) %>
+
+<style media="screen">
+  #trip-left-side .profile-pic.small.guide { 
+		background: url(<%= @trip.guide.image.url(:medium) if @trip.guide %> ) no-repeat;
+		background-size: 150px Auto; }
+</style>
+
+<div class="container-fluid" id="mainWrapper">
+
+	<div class="container trip-show">
+
+		<section id="top-half" class="row">
+
+			<div id="trip-left-side"  class="col col-sm-8">
+				<ul class="rslides centered-btns trip-show">
+					<li><%= image_tag(@trip.primary_image.asset.url, title: "#{@trip.title}") if @trip.primary_image %></li>
+					<% @images.each_with_index do |image, index| %>
+						<li><%= image_tag(image.asset.url, title: "#{@trip.title}")%></li>
+					<% end %>
+				</ul>
+			</div>
+
+
+			<div id="trip-right-side" class="col col-sm-4">
+				<div id="trip-summary" class="row">
+					<h1 class="heading"><%= @trip.title %></h1>
+					<h5 class="subheading"><%= @trip.tag_line %></h5>
+					<p>
+						<%= @trip.short_description %>
+					</p>
+				</div>
+
+				<div class="row cost-summary flat-right">
+					<%= content_tag "span", id: "min", data: {min: @trip.min} do %><% end %>
+					<%= content_tag "span", id: "max", data: {max: @trip.max} do %><% end %>
+					<%= content_tag "span", id: "ids", data: {ids: @trip_id_array} do %><% end %>
+					<% price_lines(@trip).each do |pl| %>
+						<%= content_tag :p, pl %>
+					<% end %>
+				</div>
+
+				<div class="row book-now flat-right">
+					<a id="go-customize" class="btn btn-info btn-lg">Book now</a>
+				</div>
+			</div>
+		</section>
+
+
+		<section id="bottom-half" class="row">
+			<div id="trip-left-side" class="col col-sm-8">
+
+				<section class="trip-details">
+					<% if @trip.guide %>
+						<div class="row guide-profile">
+							<div class="col col-md-3 guide-pic" title="<%= @trip.guide.full_name %>">
+								<div class="profile-pic small guide"></div>
+							</div>
+							<div class="col col-md-9 guide-bio">
+								<h6>your guide</h6>
+								<div class="guide-title"><strong><%= @trip.guide_full_name %></strong></div>
+								<p><%= @trip.guide_intro %></p>
+							</div>					
+						</div>
+					<% end %>
+
+						<!--                   -->
+						<!--     PHONE ONLY    -->
+						<!--                   -->
+
+					<div class="characteristics visible-xs">
+						<div class="row trip-details">
+							<div class="col col-xs-4 key">
+								Length
+							</div>
+							<div class="col col-xs-6 value">
+								<%= @trip.length_description %>
+							</div>
+						</div>
+						<div class="row trip-details">
+							<div class="col col-xs-4 key">
+								Intensity
+							</div>
+							<div class="col col-xs-6 value">
+								<%= @trip.difficulty %>
+							</div>
+						</div>
+						<div class="row trip-details">
+							<div class="col col-xs-4 key">
+								Best time of year
+							</div>
+							<div class="col col-xs-6 value">
+								<%= @trip.time_of_year %>
+							</div>
+						</div>
+					</div>
+
+						<!--                   -->
+						<!--        END        -->
+						<!--                   -->
+
+
+					<div class="row">
+						<div class="col col-sm-12 trip-list">
+							<h5>Description</h5>
+							<ul><%= simple_format(@trip.description, :class => "paragraph-description") %></ul>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col col-sm-12 trip-list">
+							<h5>Itinerary</h5>
+							<ul><%= make_list(@trip.itinerary) %></ul>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col col-md-6 trip-list pad-right">
+							<h5>What to Bring</h5>
+							<ul><%= make_list(@trip.required_gear) %></ul>
+						</div>
+						<div class="col col-md-6 trip-list provided">
+							<h5>What's provided</h5>
+							<ul><%= make_list(@trip.supplied_gear) %></ul>       
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col col-md-6 trip-list pad-right">
+							<div id="google_map">
+								<h5>Meeting location</h5>
+								<div class="address">
+									<%= @trip.meeting_description %>
+									<br>
+									<%= format_meeting_address(@trip) %>
+								</div>
+								<% if @trip.company_country == "United States" %>
+	 								<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@trip.latitude}%2C#{@trip.longitude}", title: "Meeting location" %>
+
+									<small>Get directions with Google Maps <%= link_to 'here', "http://maps.google.com/?q=#{@trip.latitude},#{@trip.longitude}", target: "blank" %></small>
+								<% end %>
+							</div>
+						</div>	
+						<div class="col col-md-6 trip-list">
+							<% if @trip.special_directions && @trip.special_directions.strip.split(" ").length > 0 %>
+								<h5>Special directions</h5>
+								<ul><%= make_list(@trip.special_directions) %></ul>
+							<% end %>
+						</div>		
+					</div>
+
+					<div class="row company-profile">
+						<div class="col col-sm-12 guide-bio">
+							<div class="row company-title-row">
+								<div class="col col-sm-9">
+									<h6>host company</h6>
+									<div class="company-title"><%= @trip.company_name %></div>
+								</div>
+								<div class="col col-sm-3 company-logo-container">
+									<div class="company-logo">
+										<%= image_tag @trip.company.logo.url(:medium), title: "#{@trip.company.name} logo", alt: "#{@trip.company.name} logo" %>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col-xs-12">
+									<p><%= @trip.company_description %></p>
+								</div>
+							</div>
+						</div>				
+					</div>
+					
+					<div class="row">
+						<div class="col col-sm-12 trip-list">
+							<h5>Cancellation Policy</h5>
+								<p><%= simple_format(@trip.refund_policy, :class => "paragraph-description") %></p>
+						</div>
+					</div>
+
+
+				</section>
+
+			</div>
+
+			<div id="trip-right-side" class="col col-sm-4" >
+
+				<!--                   -->
+				<!--     NON PHONE     -->
+				<!--                   -->
+
+				<div class="characteristics hidden-xs">
+					<div class="row trip-details flat-right">
+						<div class="col col-xs-4 key">
+							Length
+						</div>
+						<div class="col col-xs-6 value">
+							<%= @trip.length_description %>
+						</div>
+					</div>
+					<div class="row trip-details flat-right">
+						<div class="col col-xs-4 key">
+							Intensity
+						</div>
+						<div class="col col-xs-6 value flat-right">
+							<%= @trip.difficulty %>
+						</div>
+					</div>
+
+					<div class="row trip-details flat-right">
+						<div class="col col-xs-4 key">
+							Best time of year
+						</div>
+						<div class="col col-xs-6 value">
+							<%= @trip.time_of_year %>
+						</div>
+					</div>
+				</div>
+
+
+				<!--                   -->
+				<!--        END        -->
+				<!--                   -->
+
+				<div class="row form flat-right" >
+					<a id="customize"></a>
+					<h5 class="text-center customize-title"> Customize My Trip </h5>
+
+					<%= form_for [@trip, @order_item], class: "form-horizontal", role: "form" do |f| %>
+					
+			      <% flash.each do |key, value| %>
+			        <div class="alert alert-<%= key %>"><%= value %></div>
+			      <% end %>
+
+						<div class="row flat-right">
+							<div class="col col-md-6 date">
+								<%= f.label :date, 'Date of trip', class: "control-label" %>
+								<br><a class="normalize" data-toggle="modal" data-target="#date_request_model", id="request_a_date"> Request a date.</a>
+							</div>
+							<div class="col col-md-6 date-select">
+								<% if @trip_dates.count > 0 %>
+									<%= f.collection_select :trip_date_id, @trip_dates, :id, :date_range_with_weekday, :prompt => "Select a Date" %>
+								<% else %>
+									<p class="notice" id="no_dates">No dates available.<br>Try requesting a date!</p>
+								<% end %>
+							</div>
+						</div>
+
+						<div id="non_dates">
+							<div class="row form-group flat-left error-row flat-right">
+								<div class="col col-xs-12">
+									<div id="date-input-error" class="input-error date"></div>
+								</div>
+							</div>
+
+							<div id="number_of_people_input" class="row form-group flat-left over-error-row flat-right">
+								<div class="col col-md-6">
+									<%= f.label :number_of_people, 'Total in party', class: "control-label" %>
+								</div>
+								<div class="col col-md-6">
+									<%= f.number_field :number_of_people, id: "input_nop", class: "form-control number-of-people", placeholder: "number of people" %>
+								</div>
+							</div>
+
+							<div class="row form-group flat-left error-row flat-right">
+								<div class="col col-xs-12">
+									<div id="nop-input-error" class="input-error number-of-people"></div>
+								</div>
+							</div>
+
+							<div class="row calculate-total" id='calculate_total'>
+								<%= link_to_function "Calculate total", "ajaxCalcTotal()", id: "calculate-total", class: "btn btn-danger btn-lg" %>
+							</div>
+
+							<fieldset class="register" id='register'>
+								<div class="row subtotal flat-right">
+									<div class="col col-xs-6">
+										Subtotal 
+									</div>
+									<div class="col col-xs-6">
+										<span id="subtotal" class="subtotal amt">$0</span>
+									</div>
+								</div>
+
+								<div class="row service-tax flat-right">
+									<div class="col col-xs-6">
+										Service tax
+									</div>
+									<div class="col col-xs-6">
+										<span id="service_tax" class="service-tax amt">$0</span>
+									</div>
+								</div>
+
+								<div class="row total flat-right">
+									<div class="col col-xs-6">
+										Total
+									</div>
+									<div class="col col-xs-6">
+										<strong><span id="grand_total" class="total amt">$0</span></strong>
+									</div>
+								</div>
+							</fieldset>
+
+							<div class="row actions-holder" id='actions_holder'>
+								<div class="actions">
+									<%= f.submit 'Add to cart', :class => "btn btn-info btn-lg", :id => "add_to_cart" %>
+									<p>or <%= link_to 'cancel', home_path(:anchor => 'activities') %></p>
+								</div>
+							</div>
+						</div>
+					<% end %>
+
+				</div>
+			</div>
+		</section> <!-- end bottom half -->
+
+	</div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="date_request_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Request a Date</h4>
+      </div>
+      <div class="modal-body">
+      	<%= form_for [@trip, @request], class: "form-inline", role: "form" do |r| %>
+
+      		<div class="row form-group">
+		        <div class="col-xs-12">
+			        <br>For: <strong><%= @trip.title %></strong> - <%= @trip.activity_title + " in " + @trip.location_description %>
+			        <br>Please tell us a bit about when you would like to go, as well as anything else you'd like us to know.
+			        <%= r.text_area :message, class: "request-message form-control" %>
+	        	</div>
+	        </div>
+
+	        <div class="row form-group">
+		        <div class="col-xs-12">
+			        <%= r.text_field :requested_attendance, placeholder: "For how many people?", class: "request-input form-control" %>
+			    </div>
+		    </div>
+
+	        <div class="row form-group">
+		        <div class="col-xs-12">
+			        <%= r.text_field :email, placeholder: "Your email", class: "request-input form-control" %>
+			    </div>
+		    </div>
+	        <div class="row form-group">
+		        <div class="col-xs-12">
+			        <%= r.text_field :name, placeholder: "Your name", class: "request-input form-control" %>
+			    </div>
+		    </div>
+	      </div>
+	      <div class="row">
+		      <div class="col-xs-12 request-thanks">												      
+			      <strong>Thank you!</strong> We'll get back to you about your request within 72 hours.
+			      <br>
+			      <br> - the coElevation Team
+			      <br>&nbsp;
+		      </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel_request_button">Cancel</button>
+	        <%= r.submit 'Request', class: "btn btn-primary", id: "request_submit" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

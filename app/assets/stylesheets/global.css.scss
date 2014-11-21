@@ -1,0 +1,92 @@
+@import "control_panel";
+
+/* Short section for devise templates  */
+section.devise {
+	margin-top: 150px;
+}
+
+
+/* all other global styles  */
+
+h1 { font-size: 3em; text-transform: uppercase; }
+h2 { font-size: 2.5em; }
+h3 { font-size: 2em; }
+h4 { font-size: 1.5em; }
+h5 { font-size: 1.3em; }
+h6 { font-size: 1.1em; }
+
+body { letter-spacing: .02em; }
+
+.inline { display: inline;}
+.right { float: right;}
+.is-center { text-align: center; }
+
+.skinnyrow { clear: both; }
+
+.divider { background-color: $lightgrey; height: 1px; width: 100%;  margin: 0 auto;}
+.divider.half { width: 50%; }
+.divider.third { width: 33%; }
+.divider.quarter { width: 25%; }
+
+.row.grey-bar { height: 1px; background-color: $lightgrey; margin-top: 30px; margin-bottom: 30px; margin-right: -10px; }
+.bar { background-color: $lightgrey; height: 3px; width: 100%;  margin: 0 auto; margin-top: 30px; margin-bottom: 30px;}
+.bar.half { width: 50%; }
+.bar.third { width: 33%; }
+.bar.quarter { width: 25%; }
+
+.clear-both { clear: both; height: 0px; margin: 0; padding: 0; }
+
+.full-height { min-height: 600px; }
+.content { margin-top: 60px; margin-bottom: 60px;}
+.content .row { margin: 0px 0px; }
+.content-text p { margin-bottom: 20px; }
+
+.top.container {  margin-top: 80px;}
+
+.standard-main p { margin-top: 10px; margin-bottom: 20px;}
+
+.bigger { font-size: 1.3em;}
+
+.red { color: $red; }
+.green { color: $lime; }
+.blue { color: $blue; }
+
+.heading { margin-top: 60px; margin-bottom: 30px; text-align: center;}
+.heading .fa { font-size: 100%; padding-right: 20px;}
+
+h2 .edit-link,
+h3 .edit-link { font-weight: 200; font-size: 40%; color: blue;}
+.delete-link { font-weight: 200; color: $blue; font-size: 80%;}
+.blue-link { color: $blue; }
+
+.rslides { position: relative; list-style: none; overflow: hidden; width: 100%; padding: 0; margin: 0; }
+.rslides li { -webkit-backface-visibility: hidden; position: absolute; display: none; width: 100%; left: 0; top: 0; }
+.rslides li:first-child { position: relative; display: block; float: left; }
+.rslides img { display: block; height: auto; float: left; width: 100%; border: 0; }
+
+.paragraph-description { margin-bottom: 10px; }
+
+.notice { padding: 5px 10px; background-color: rgba(255, 0, 0, .4); }
+
+a.btn-processing { background-color: $faintgrey; border: 1px solid $darkgrey; color: $grey; cursor: default; }
+a.btn-processing:hover { @extend a.btn-processing; }
+a.btn-processing:active { @extend a.btn-processing; }
+a.normalize { cursor: pointer; }
+a.black-text { color: $black; }
+a.white-text { color: white; }
+
+/* Device size specific configuration  */
+
+@media only screen and (min-width:992px) and (max-width:1199px) {
+
+
+}
+
+@media only screen and (min-width:768px) and (max-width:991px) {
+
+
+}
+
+@media only screen and (max-width:767px) {
+
+}

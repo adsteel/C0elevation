@@ -1,0 +1,41 @@
+
+<% provide(:title, "All client agreements") %>
+
+<div class="container-fluid">
+
+  <section class="container client-agreements admin">
+
+    <h1>All client agreements</h1>
+
+    <%= link_to '+ New Client agreement', new_admin_client_agreement_path, class: "btn btn-success" %> 
+    <%= render 'admin/shared/admin_breadcrumbs' %>
+
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Uniq name</th>
+          <th>Date uploaded</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @client_agreements.each do |client_agreement| %>
+          <tr>
+            <td><%= client_agreement.id %></td>
+            <td><%= client_agreement.uniq_name %></td>
+            <td><%= client_agreement.created_at %></td>
+            <td><%= link_to 'Open', client_agreement.pdf.url, target: "blank" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+
+
+  </section>
+
+</div>

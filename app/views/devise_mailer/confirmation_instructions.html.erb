@@ -1,0 +1,21 @@
+<% provide(:title, 'Confirm account') %>
+
+<div class="row">
+	This email has just been registered at coelevation.com.
+</div>
+
+<div class="row">
+	If you requested this registration, please confirm your account <%= link_to 'here', confirmation_url(@resource, confirmation_token: @token) %>
+</div>
+
+<div class="row">
+	If you did not request this registration, please click <%= link_to 'here', user_path(@resource, method: :delete) %>.
+</div>
+
+<div class="row">
+	<p>Thank you,</p>
+</div>
+
+<div class="row">
+	<p>&nbsp; The coElevation.com Team</p>
+</div>

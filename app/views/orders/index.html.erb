@@ -1,0 +1,33 @@
+<section class="scaffold">
+	<h1>Order index</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th># of trips</th>
+				<th>Created at</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @orders.each do |order| %>
+				<tr>
+					<td><%= order.id %></td>
+					<td><%= order.order_items.count %></td>
+					<td><%= order.created_at.strftime('%m - %d - %y') %></td>
+					<td><%= link_to 'Show', order %></td>
+					<td><%= link_to 'Edit', edit_order_path(order) %></td>
+					<td><%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure you want to delete this order?' } %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<br>
+
+	<%= link_to 'Create New Order', new_order_path %>
+</section>

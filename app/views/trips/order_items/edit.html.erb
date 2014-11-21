@@ -1,0 +1,34 @@
+<% provide(:title, "Update your trip") %>
+
+<section class="scaffold">
+<div class="pure-g-r">
+	<div class="pure-u-1-4">
+		&nbsp;
+	</div>
+	<div class="pure-u-1-2">
+		<h1 class="is-center">Update your <%= @order_item.activity_title.downcase %> trip </h1>
+
+		<div class="row">
+			You currently have <%= pluralize(@order_item.trip_attendance, 'person') %> scheduled for this trip. How many would you like to have?
+		</div>
+
+		<%= form_for @order_item, :url => {:controller => 'order_item_updates', :action => "edit_redirect"}, method: :get do |f| %>
+
+			<div class="row">
+				<%= f.label :number_of_people, '# of People Total' %><br>
+				<%= f.number_field :number_of_people, :value => @order_item.trip_attendance %>
+				or <%= link_to 'Cancel trip', confirm_cancel_trip_path %>
+			</div>
+			
+			<div class="row actions">
+				<%= f.submit 'Update your trip', :class => "pure-button" %>
+				<p>or <%= link_to 'cancel', order_item_path(@order_item) %></p>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="pure-u-1-4">
+		&nbsp;
+	</div>
+
+</section>

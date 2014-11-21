@@ -1,0 +1,13 @@
+<% provide(:title, 'Confirm account') %>
+
+<div class="row">
+	Welcome <%= @email %>!
+</div>
+
+<div class="row">
+	You have received this message because this email was registered for an account with coElevation.com. Please confirm your coElevation.com account email through the link below:
+</div>
+
+<div class="row">
+	<%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: "btn btn-success" %>
+</div>

@@ -1,0 +1,16 @@
+<section id="personal_information">
+	<% unless @user.profile_complete? %>
+		<div class="row">
+		    <div class="col-md-4 col-md-offset-4 profile-msg">
+				<h5 class="down-20">Your profile is not quite complete.</h5>
+				<p>We still need some information before you go on a trip:</p>
+				<br>
+				<ol><% @user.missing_attributes.each do |a| %>
+					<li><%= a %></li>
+					<% end %>
+				</ol>
+			</div>
+		</div>
+	<% end %>
+
+</section>

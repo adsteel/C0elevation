@@ -1,0 +1,3 @@
+$('#subtotal').text("<%= number_to_currency @services, precision: 2 %>");
+$('#service_tax').text("<%= number_to_currency @tax, precision: 2 %>");
+$('#grand_total').text("<%= number_to_currency @grand, precision: 2 %>");

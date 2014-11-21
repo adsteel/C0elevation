@@ -1,0 +1,173 @@
+<% provide(:title, "Edit profile") %>
+
+<section class="container-fluid">
+	<div class="container main-users users-edit">
+
+		<%= form_for @user, html: { :class => "form-horizontal" } do |f| %>
+			<% if @user.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+					<ul>
+					<% @user.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+					</ul>
+				</div>
+			<% end %>
+
+			<%= render 'profile_msg' %>
+
+			<section id="personal_information">
+				<h4>Personal Account Information</h4>
+
+				<div class="row account-information grey-bg">
+					<div class="col-md-4">
+						<div class="row form-group">
+							<div class="col-md-4">
+								<%= f.label :first, 'First' %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :first, class: "form-control" %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :last, 'Last' %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :last, class: "form-control" %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :gender %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :gender, class: "form-control" %>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :phone, 'Phone' %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :phone, class: "form-control", :value => phone_format(f.object.phone) %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :email, 'Email' %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :email, class: "form-control" %>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :street_address %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :street_address, class: "form-control" %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :city %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :city, class: "form-control" %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :state %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :state, class: "form-control" %>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+
+
+			<section id="emergency_contact_info">
+				<h4>Emergency Contact Information</h4>
+
+				<div class="row account-information grey-bg">
+					<div class="col-md-4">
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :emergency_first, 'First' %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :emergency_first, class: "form-control" %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :emergency_last, 'Last' %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :emergency_last, class: "form-control" %>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :emergency_phone, 'Phone' %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :emergency_phone, class: "form-control", :value => phone_format(f.object.emergency_phone) %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :emergency_email, 'Email' %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :emergency_email, class: "form-control" %>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">					
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :emergency_relationship, 'Relationship' %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_field :emergency_relationship, class: "form-control" %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<%= f.label :emergency_notes, 'Additional notes' %>
+							</div>
+							<div class="col-md-8">
+								<%= f.text_area :emergency_notes, class: "form-control" %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4 is-center">
+					<%= f.submit 'Update', :class => "btn btn-lg btn-primary btn-block up-40"%>
+					<br><%= link_to 'Cancel', @user, class: "blue-link" %>
+				</div>
+			</div>
+
+		<% end %>
+
+	</div>
+
+</section>
+

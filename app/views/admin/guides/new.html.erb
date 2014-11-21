@@ -1,0 +1,15 @@
+<% provide(:title, "Guide signup") %>
+
+<section class="container-fluid">
+	<div class="container full-height admin">
+
+		<div class="row">
+			<h1>Guide signup</h1>
+			<%= render 'admin/shared/admin_breadcrumbs' %>
+
+			<%= render 'form' %>
+			
+			<%= link_to 'Cancel', admin_guides_path, class: "btn btn-primary" %>
+		</div>
+	</div>
+</section>

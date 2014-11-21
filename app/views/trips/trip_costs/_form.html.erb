@@ -1,0 +1,70 @@
+
+<%= form_for [@trip, @trip_cost] do |f| %>
+  <% if @trip_cost.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trip_cost.errors.count, "error") %> prohibited this trip_cost from being saved:</h2>
+
+      <ul>
+      <% @trip_cost.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <%= f.label :one %><br>
+      <%= f.number_field :one, class: "cost" %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label :two %><br>
+      <%= f.number_field :two, class: "cost" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= f.label :three %><br>
+      <%= f.number_field :three, class: "cost" %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label :four %><br>
+      <%= f.number_field :four, class: "cost" %>
+    </div>
+  </div>
+  <div class="row">    
+    <div class="col-sm-2">
+      <%= f.label :five %><br>
+      <%= f.number_field :five, class: "cost" %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label :six %><br>
+      <%= f.number_field :six, class: "cost" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= f.label :seven %><br>
+      <%= f.number_field :seven, class: "cost" %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label :eight %><br>
+      <%= f.number_field :eight, class: "cost" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= f.label :nine %><br>
+      <%= f.number_field :nine, class: "cost" %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label :ten %><br>
+      <%= f.number_field :ten, class: "cost" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= f.submit 'Save', class: "btn btn-primary btn-lg" %>
+    </div>
+  </div>
+<% end %>

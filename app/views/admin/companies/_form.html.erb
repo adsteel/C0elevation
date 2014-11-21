@@ -1,0 +1,70 @@
+<%= form_for [:admin, @company] do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <br>
+    <%= f.label :logo, "Upload a logo - any aspect ratio" %>
+    <%= f.file_field :logo %>
+    <br>
+  </div>
+  <div class="row">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="row">
+    <%= f.label :owner %>
+    <%= f.collection_select :owner_id, @owners, :id, :full_name, :prompt => "Select an owner" %>
+  </div>
+  <div class="row">
+    <%= f.label :hq_address %><br>
+    <%= f.text_field :hq_address %>
+  </div>
+  <div class="row">
+    <%= f.label :hq_city %><br>
+    <%= f.text_field :hq_city %>
+  </div>
+  <div class="row">
+    <%= f.label :hq_state %><br>
+    <%= f.text_field :hq_state %>
+  </div>
+  <div class="row">
+    <%= f.label :country %><br>
+    <%= f.text_field :country %>
+  </div>
+  <div class="row">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="row">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="row">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="row">
+    <%= f.label :contact_name %><br>
+    <%= f.text_field :contact_name %>
+  </div>
+  <div class="row">
+    <%= f.label :refund_policy %><br>
+    <%= f.text_area :refund_policy, class: "big" %>
+  </div>
+  <div class="row">
+    <%= f.label :active, 'Active? (should it be visible?)' %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="row">
+    <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>

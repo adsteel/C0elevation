@@ -1,0 +1,43 @@
+@import "control_panel";
+
+.admin .row { margin: 20px 0px; }
+
+.admin.trips .row { margin: 10px 0px; }
+
+.admin.trips .row.stackable > div { margin-bottom: 20px; padding: 15px; border-top: 2px $lightgrey solid;}
+
+.admin li { list-style-type: square; list-style-position: inside; }
+
+.admin a.btn { color: white; }
+
+.admin input { width: 100%; }
+
+.admin textarea { width: 100%; min-height: 150px;}
+
+.admin textarea.big { width: 100%; min-height: 400px; }
+
+.admin input[type="submit"] { min-width: 100px; }
+
+
+.admin td { padding: 5px 10px; }
+.admin th { padding: 5px 10px; }
+
+.admin h1 { text-align: center; margin-top: 80px; }
+
+.admin tr { border-bottom: solid $superlightgrey 2px;}
+
+.admin tr:nth-child(2n) { background-color: $faintgrey;}
+
+.admin fieldset { border: solid 1px $lightgrey; margin: 20px 0px; padding: 10px 20px;}
+
+.admin legend { margin-left: 20px; }
+
+.admin .description-paragraph { margin: 10px 0px; }
+
+.admin .image-display { border-bottom: solid $lightgrey 1px; padding-bottom: 10px;}
+
+.admin h1,
+.admin h2,
+.admin h3,
+.admin h4,
+.admin h5 { margin-top: 20px; border-bottom: $red solid 1px;}

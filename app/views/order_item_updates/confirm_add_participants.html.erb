@@ -1,0 +1,60 @@
+<% provide(:title, "Add participants to your trip") %>
+
+<section class="scaffold">
+<div class="pure-g-r">
+	<div class="pure-u-1-4">
+		&nbsp;
+	</div>
+	<div class="pure-u-1-2">
+
+		<div class="row">
+			You have requested spots for <%= @attendance_difference %> additional people, for an additional $<%= @new_charge %>.  
+		</div>
+
+		<div class="row">
+			Please enter your credit card information.
+		</div>
+
+		<%= form_for @new_oi, :url => {:controller => 'order_item_updates', :action => "add_participants"}, method: :post, :html => { :id => "new_order", :class => "add_participants" } do |f| %>
+
+			<div class="row">
+				<%= text_field_tag :name, nil, name: nil, :placeholder => "name on card" %>
+			</div>
+			<div class="row">
+				<%= text_field_tag :card_number, nil, name: nil, :placeholder => "card number", 'data-stripe' => 'number' %>
+			</div>
+			<div class="row">
+				Card expires 
+				<%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", 'data-stripe' => 'exp-month'} %>
+				<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+7}, {name: nil, id: "card_year", 'data-stripe' => 'exp-year'} %>
+			</div>
+			<div class="row">
+				<%= text_field_tag :card_code, nil, name: nil, :placeholder => "cvc", 'data-stripe' => 'cvc' %>
+				<%= hidden_field_tag :order_total, @cost_difference %>
+			</div>
+
+			<div class="row">
+				<%= f.hidden_field :number_of_people, :value => @new_attendance %>
+			</div> 
+
+			<div class="row is-center">
+				<p>Adding: <%= pluralize(@attendance_difference, 'person') %></p>
+				<p><strong>Total: $<%= @new_charge %>.</strong></p>
+				<p><%= f.submit 'Confirm purchase', :class => "pure-button" %></p>
+			</div>
+
+			<div id="stripe_error">
+				<noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+			</div>
+
+			<div class="row is-center">
+			<%= link_to 'Cancel', profile_path %>
+			</div>
+		<% end %>
+
+	</div>
+	<div class="pure-u-1-4">
+		&nbsp;
+	</div>
+</div>
+</section>

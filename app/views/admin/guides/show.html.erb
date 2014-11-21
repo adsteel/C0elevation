@@ -1,0 +1,68 @@
+<% provide(:title, "Guide Profile") %>
+
+<section class="container-fluid">
+  <div class="container full-height admin">
+
+    <div class="row">
+      <%= link_to 'Edit', edit_admin_guide_path(@guide), class: "btn btn-success" %> 
+      <%= render 'admin/shared/admin_breadcrumbs' %>
+    </div>
+
+    <div class="row">
+
+      <p id="notice"><%= notice %></p>
+
+          <p>
+            <%= image_tag @guide.image.url(:medium) %>
+          </p>
+
+      <p>
+        <strong>Name:</strong>
+        <%= @user.full_name %>
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
+
+      <p>
+        <strong>Intro:</strong>
+        <%= @guide.intro %>
+      </p>
+
+      <p>
+        <strong>Bio:</strong>
+        <%= @guide.bio %>
+      </p>
+
+      <p>
+        <strong>Approved:</strong>
+        <%= @guide.approved %>
+      </p>
+
+      <p>
+        <strong>Banned:</strong>
+        <%= @guide.banned %>
+      </p>
+
+      You have <%= pluralize(@trips.count, 'trip') %>.
+      <% c = 0 %>
+
+      <p>
+        <% @trips.each do |t| %>
+          <% c = c+1 %>
+          Trip <%= c %>
+            <ul>
+                <li>Location: <%= t.location_id %></li>
+                <li>Company: <%= t.company_id %></li>
+            </ul>
+        <% end %>
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+

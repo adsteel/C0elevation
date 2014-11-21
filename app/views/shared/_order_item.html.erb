@@ -1,0 +1,41 @@
+<div class="row item">
+	<div class="col-md-5">
+		<div class="row item-image">
+			<%= link_to new_trip_order_item_path(order_item.trip) do %>
+				<%= image_tag(order_item.primary_image.asset.url(:medium)) if order_item.primary_image %>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="col-md-7 item-summary-container">
+		<div class="row item-title">
+			<%= link_to new_trip_order_item_path(order_item.trip) do %>
+				<strong><%= order_item.title %></strong>
+				<br>in <%= order_item.location_description %>
+			<% end %>
+		</div>
+		<div class="row item-details item-summary">
+			<%= order_item.short_description %>
+		</div>
+		<div class="row item-details">
+			<strong><%= order_item.date_range %></strong>
+		</div>
+		<div class="row item-details">
+			<%= order_item.length_description %>, <%= order_item.difficulty %> difficulty
+		</div>
+		<div class="row item-details">
+			meeting location: <strong><%= order_item.meeting_description %></strong>
+		</div>
+		<div class="row item-details">
+			for <%= order_item.number_of_people %> people
+		</div>
+		<div class="row item-details total">
+			<strong><%= number_to_currency(order_item.line_total, precision: 0 ) %></strong>
+		</div>
+		<% if cart? %>
+			<div class="row item-details delete">
+				<strong><%= link_to "Remove", trip_order_item_path(order_item.trip, order_item), method: :delete, class: "delete-link" %></strong>
+			</div>
+		<% end %>
+	</div>
+</div>

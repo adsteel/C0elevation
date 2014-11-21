@@ -1,0 +1,85 @@
+<% provide(:title, "FAQs") %>
+
+<section class="container-fluid">
+	<div class="container full-height">
+
+		<h1 class="heading"><i class="fa fa-question-circle title red"></i>FAQs</h1>
+
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel-group" id="accordion">
+
+					<%= render partial: 'shared/faq', locals: { 
+						number: 	1.in_words,
+						question: "What are the guides’ qualifications?",
+						answer: 	"Every guide maintains current first aid and CPR certifications. Many guides hold additional certifications in their disciplines, including recognition by the AMGA or IFFF. All guides are carefully vetted and have training and experience that distinguish them as professionals in their field." 
+					}
+					%>
+					
+					<%= render partial: 'shared/faq', locals: { 
+						number: 	2.in_words,
+						question: "Where / how do I meet my guide?",
+						answer: 	"<p>Each trip description and confirmation email will include a set place to meet your guide. Sometimes, to allow for flexibility in weather or location conditions, your guide will contact you prior to your trip to let you know where to meet.</p>
+
+<br><p>Our guides are friendly! At the meeting location your guide will likely find you, but it should be very easy to find that person.</p>"
+	 				}
+					%>
+
+
+					<%= render partial: 'shared/faq', locals: { 
+						number: 	3.in_words,			
+						question: "What do I need to bring?",
+						answer: 	"Both the initial and final trip confirmations will include a list of all the gear you will need to bring, as well as the gear your guide will be providing. Your guide will sometimes provide essentials, but it is common to bring or rent some of your own items. For all trips you should plan to bring a small daypack, water, appropriate clothing for layers, sunscreen and a light rain jacket."
+						}
+					%>
+
+					<%= render partial: 'shared/faq', locals: { 			
+						number: 	4.in_words,
+						question: "Should I tip my guide?",
+						answer: 	"Tipping is customary in the guiding industry and a sign of appreciation for a job well done. Please use your discretion when tipping at your trip's conclusion. 15-20% of the trip cost is typical." 
+					}
+					%>
+					
+					<%= render partial: 'shared/faq', locals: { 
+						number: 	5.in_words,			
+						question: "What is your cancelation policy?",
+						answer: 	"Cancellation policies may vary between host companies. Please check the details of your trip to view the specifics."
+						}
+					%>					
+					
+
+					<%= render partial: 'shared/faq', locals: { 
+						number: 	6.in_words,			
+						question: "How do I cancel?",
+						answer: 	"Cancellations should be made directly through your guide or host company."
+						}
+					%>	
+						
+					<%= render partial: 'shared/faq', locals: { 
+						number: 	7.in_words,			
+						question: "How do I edit a trip in my cart?",
+						answer: 	"The quickest solution is to remove the trip from your cart and re-add it with the correct date and number of participants."
+						}
+					%>		
+					
+					<%= render partial: 'shared/faq', locals: { 
+						number: 	8.in_words,			
+						question: "How do I makes changes to a trip that I’ve already purchased?",
+						answer: 	"Email us at cancel@coelevation.com. Please give us your trip number, date, activity and a phone number where we can reach you."
+						}
+					%>		
+				
+				
+					<%= render partial: 'shared/faq', locals: { 
+						number: 	9.in_words,			
+						question: "Can I be a guide?",
+						answer: 	"We would love to talk to you! Our guides have significant field experience, as well as industry standard training and certifications. If you're interested, click the \"Guides wanted\" link at the bottom of the page."
+						}
+					%>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+

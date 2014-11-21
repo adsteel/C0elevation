@@ -1,0 +1,46 @@
+<% provide(:title, "New client agreement") %>
+
+<div class="container-fluid">
+
+	<section class="container client-agreements admin">
+
+		<h1>New client agreement</h1>
+		<p class="is-center"><em>New agreements will immediately become the agreement signed with any purchase.</em></p>
+		<%= link_to 'Cancel', admin_client_agreements_path, class: "btn btn-success" %> 
+	    <%= render 'admin/shared/admin_breadcrumbs' %>
+
+		<p class="is-center"><br><%= link_to '<< Index', admin_client_agreements_path %></p>
+
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<%= form_for [:admin, @client_agreement], :html => { :multipart => true } do |f| %>
+				  <% if @client_agreement.errors.any? %>
+				    <div id="error_explanation">
+				      <h2><%= pluralize(@client_agreement.errors.count, "error") %> prohibited this client_agreement from being saved:</h2>
+
+				      <ul>
+				      <% @client_agreement.errors.full_messages.each do |msg| %>
+				        <li><%= msg %></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
+
+				  <div class="row form-group">
+				    <%= f.label :uniq_name %><br>
+				    <%= f.text_field :uniq_name, value: @uniq_string %>
+				  </div>
+
+				  <div class="row form-group">
+			  	    <%= f.label :pdf, 'Upload PDF version' %>
+					<%= f.file_field :pdf %>
+				  </div>
+
+				  <div class="row">
+				    <%= f.submit 'Add agreement', confirm: "Are you sure? Adding a new client terms of agreement means all such agreements signed from now on will be this agreement.", class: "btn btn-lg btn-primary" %>
+				  </div>
+				<% end %>
+			</div>
+		</div>
+	</section>
+</div>
